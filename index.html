@@ -71,16 +71,17 @@
       column-gap: clamp(24px, 2.7vw, 46px);
 
       background:
-        radial-gradient(circle at 20% 0%, rgba(255, 119, 199, 0.88), transparent 30%),
-        radial-gradient(circle at 82% 14%, rgba(209, 129, 255, 0.58), transparent 32%),
-        linear-gradient(180deg, #c65eea 0%, #9139ce 42%, #491180 100%);
+        radial-gradient(circle at 18% 2%, rgba(255, 255, 255, 0.10), transparent 28%),
+        radial-gradient(circle at 78% 18%, rgba(45, 151, 199, 0.10), transparent 34%),
+        radial-gradient(circle at 48% 110%, rgba(44, 89, 140, 0.13), transparent 40%),
+        linear-gradient(180deg, #101217 0%, #080a0f 48%, #020305 100%);
 
-      background-size: 160% 160%, 160% 160%, 220% 220%;
+      background-size: 160% 160%, 170% 170%, 180% 180%, 220% 220%;
       animation: headerGlow 4.4s ease-in-out infinite alternate;
 
       box-shadow:
-        0 12px 36px rgba(39, 5, 73, 0.25),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.14);
+        0 12px 36px rgba(0, 0, 0, 0.48),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08);
     }
 
     .brand-link {
@@ -540,7 +541,7 @@
     .home-feed{min-width:0;display:flex;flex-direction:column;gap:34px}
     .feed-section{min-width:0}
     .feed-heading{display:flex;align-items:center;gap:12px;margin:0 0 13px;padding:0 6px;font-size:13px;font-weight:850;letter-spacing:2.2px;text-transform:uppercase;color:rgba(238,255,252,.9)}
-    .feed-heading::before{content:"";width:10px;height:10px;flex:0 0 auto;border-radius:50%;background:#7b2fd0;box-shadow:0 0 18px rgba(123,47,208,.58)}
+    .feed-heading::before{content:"";width:10px;height:10px;flex:0 0 auto;border-radius:50%;background:linear-gradient(145deg,#171a20,#030405 72%);box-shadow:0 0 0 1px rgba(255,255,255,.10),0 0 16px rgba(73,185,226,.22),inset 0 1px 2px rgba(255,255,255,.12)}
     .feed-card{position:relative;overflow:hidden;min-height:420px;display:grid;grid-template-columns:minmax(230px,.34fr) minmax(0,.66fr);gap:22px;padding:22px;border:1px solid rgba(255,255,255,.24);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));backdrop-filter:blur(15px);box-shadow:0 24px 60px rgba(5,18,48,.24)}
     .feed-card::before{content:"";position:absolute;inset:-45%;z-index:-1;background:conic-gradient(from 50deg,rgba(77,245,214,.18),rgba(66,128,255,.18),rgba(194,83,239,.14),rgba(77,245,214,.18));animation:slowSpin 28s linear infinite}
     .feed-info{align-self:center;padding:8px 6px 8px 8px}
