@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -173,15 +173,13 @@
       animation: buttonFlow 6s ease-in-out infinite alternate;
 
       box-shadow:
-        0 11px 0 rgba(22, 57, 139, 0.30),
-        0 18px 28px rgba(15, 8, 62, 0.24),
-        inset 0 2px 0 rgba(255, 255, 255, 0.20),
-        inset 0 -8px 16px rgba(12, 49, 133, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1px 0 rgba(8, 54, 122, 0.16);
 
       font-family: "Rajdhani", "Segoe UI", ui-sans-serif, sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.075em;
+      font-weight: 700;
+      font-size: 1.04rem;
+      letter-spacing: 0.005em;
       text-transform: uppercase;
 
       cursor: pointer;
@@ -192,27 +190,6 @@
         box-shadow 180ms ease;
     }
 
-    .menu-button::before {
-      content: "";
-      position: absolute;
-      inset: 2px 3px auto 3px;
-      height: 46%;
-      pointer-events: none;
-      border-radius: 14px 14px 10px 10px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.03));
-      z-index: -1;
-    }
-
-    .menu-button::after {
-      content: "";
-      position: absolute;
-      inset: auto 3px 3px 3px;
-      height: 38%;
-      pointer-events: none;
-      border-radius: 10px 10px 14px 14px;
-      background: linear-gradient(180deg, rgba(17,69,159,0), rgba(17,69,159,0.18));
-      z-index: -1;
-    }
 
     .menu-button > span:first-child,
     .menu-button .chevron {
@@ -227,7 +204,9 @@
     }
 
     .menu-button > span:first-child {
-      font-size: 1.04em;
+      font-size: 1em;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .menu-button:hover,
@@ -235,20 +214,16 @@
       transform: translateY(-3px);
       filter: brightness(1.10) saturate(1.08);
       box-shadow:
-        0 13px 0 rgba(22, 57, 139, 0.28),
-        0 22px 34px rgba(15, 8, 62, 0.30),
-        inset 0 2px 0 rgba(255, 255, 255, 0.24),
-        inset 0 -9px 18px rgba(12, 49, 133, 0.24);
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(8, 54, 122, 0.18);
       outline: none;
     }
 
     .menu-button:active {
       transform: translateY(4px);
       box-shadow:
-        0 4px 0 rgba(22, 57, 139, 0.26),
-        0 9px 18px rgba(15, 8, 62, 0.22),
-        inset 0 2px 0 rgba(255, 255, 255, 0.16),
-        inset 0 -7px 15px rgba(12, 49, 133, 0.26);
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(8, 54, 122, 0.20);
     }
 
     .menu-button .chevron {

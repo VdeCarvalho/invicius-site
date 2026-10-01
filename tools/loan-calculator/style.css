@@ -91,11 +91,11 @@ button {
 
 .header-actions { margin-left:auto; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
 .header-menu-wrap { position:relative; }
-.header-menu-button { position:relative; min-width:136px; height:52px; display:inline-flex; align-items:center; justify-content:center; gap:11px; padding:0 21px; border:1px solid rgba(107,255,232,.34); border-radius:18px; background:linear-gradient(135deg,#52f2d6 0%,#25d7e8 26%,#248de4 58%,#385fe2 100%); background-size:240% 240%; animation:buttonFlow 6s ease-in-out infinite alternate; box-shadow:0 10px 0 rgba(22,57,139,.30),0 17px 27px rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.20),inset 0 -8px 16px rgba(12,49,133,.22); color:transparent; font-family:"Rajdhani","Segoe UI",ui-sans-serif,sans-serif; font-weight:600; font-size:15px; letter-spacing:.075em; text-transform:uppercase; cursor:pointer; transition:transform .18s ease,filter .18s ease,box-shadow .18s ease; }
-.header-menu-button:hover,.header-menu-button:focus-visible { transform:translateY(-3px); filter:brightness(1.1) saturate(1.08); outline:none; box-shadow:0 12px 0 rgba(22,57,139,.28),0 21px 33px rgba(0,0,0,.30),inset 0 2px 0 rgba(255,255,255,.24),inset 0 -9px 18px rgba(12,49,133,.24); }
-.header-menu-button:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(22,57,139,.26),0 9px 18px rgba(0,0,0,.22),inset 0 2px 0 rgba(255,255,255,.16)}
+.header-menu-button { position:relative; min-width:136px; height:52px; display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:0 21px; border:1px solid rgba(107,255,232,.34); border-radius:18px; background:linear-gradient(135deg,#52f2d6 0%,#25d7e8 26%,#248de4 58%,#385fe2 100%); background-size:240% 240%; animation:buttonFlow 6s ease-in-out infinite alternate; box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(8,54,122,.16); color:transparent; font-family:"Rajdhani","Segoe UI",ui-sans-serif,sans-serif; font-weight:700; font-size:1.04rem; letter-spacing:.005em; text-transform:uppercase; cursor:pointer; transition:transform .18s ease,filter .18s ease,box-shadow .18s ease; }
+.header-menu-button:hover,.header-menu-button:focus-visible { transform:translateY(-3px); filter:brightness(1.1) saturate(1.08); outline:none; box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(8,54,122,.18); }
+.header-menu-button:active{transform:translateY(2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(8,54,122,.20)}
 .header-menu-button>span:first-child,.header-chevron { color:transparent; background:linear-gradient(135deg,#010203 0%,#0b1016 28%,#18303d 55%,#070a0e 78%,#010203 100%); background-size:240% 240%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:headerInkFlow 4.4s ease-in-out infinite alternate; }
-.header-chevron { font-size:13px; transition:transform .16s ease; }
+.header-menu-button>span:first-child{font-weight:700;letter-spacing:-.01em}.header-chevron { font-size:13px; transition:transform .16s ease; }
 .header-menu-wrap.open .header-chevron { transform:rotate(180deg); }
 .header-menu-panel { position:absolute; top:calc(100% + 10px); left:0; min-width:250px; padding:9px; border:1px solid rgba(75,218,239,.34); border-radius:17px; background:radial-gradient(circle at 18% 8%,rgba(255,255,255,.08),transparent 28%),radial-gradient(circle at 82% 22%,rgba(46,164,210,.08),transparent 30%),linear-gradient(160deg,rgba(18,21,27,.98),rgba(7,9,13,.99) 58%,rgba(1,2,4,.995)); backdrop-filter:blur(18px); box-shadow:0 22px 50px rgba(0,0,0,.48),inset 0 1px 0 rgba(115,230,255,.10); opacity:0; visibility:hidden; transform:translateY(-7px); transition:opacity .15s ease,transform .15s ease,visibility .15s ease; }
 .header-menu-wrap.open .header-menu-panel { opacity:1; visibility:visible; transform:translateY(0); }
@@ -971,8 +971,8 @@ a.download {
 
 @media (max-width: 1050px) {
   .site-header { flex-wrap:wrap; }
-  .header-actions { flex:1 1 520px; gap:10px; }
-  .header-menu-button { min-width:118px; height:48px; padding:0 15px; }
+  .header-actions { flex:1 1 520px; gap:12px; }
+  .header-menu-button { min-width:136px; height:52px; padding:0 21px; }
 }
 
 @media (max-width: 760px) {
@@ -984,7 +984,7 @@ a.download {
   .calc-brand-mark i:nth-child(1){height:14px}.calc-brand-mark i:nth-child(2){height:24px}.calc-brand-mark i:nth-child(3){height:19px}
   .calc-brand-name { font-size:17px; white-space:normal; max-width:150px; }
   .header-actions { flex:1 1 100%; display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; }
-  .header-menu-button { min-width:0; width:100%; height:44px; border-radius:14px; padding:0 9px; font-size:13px; gap:7px; }
+  .header-menu-button { min-width:0; width:100%; height:43px; border-radius:13px; padding:0 12px; font-size:1rem; gap:12px; }
   .header-menu-panel { min-width:210px; }
 }
 
