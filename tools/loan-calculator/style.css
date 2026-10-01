@@ -18,33 +18,24 @@ a.download{text-decoration:none}
     width: 100%;
     max-width: none;
     margin: 28px 0;
-    padding: 0 clamp(12px, 2vw, 32px);
-    gap: clamp(12px, 1.5vw, 28px);
+    padding: 0 20px;
+    gap: 20px;
 
     grid-template-columns:
-      minmax(100px, 1fr)
+      minmax(0, 1fr)
       minmax(0, 920px)
-      minmax(100px, 1fr);
+      minmax(0, 1fr);
 
-    align-items: stretch;
+    align-items: start;
   }
 
   .ad {
     display: flex;
     width: 100%;
     min-width: 0;
-    height: auto;
-    min-height: 600px;
-    align-self: stretch;
+    height: 600px;
+    min-height: 0;
+    align-self: start;
     margin: 0;
-  }
-}
-
-@media (min-width: 1200px) {
-  .layout {
-    grid-template-columns:
-      minmax(160px, 1fr)
-      minmax(0, 920px)
-      minmax(160px, 1fr);
   }
 }
