@@ -6,6 +6,10 @@
   <meta name="description" content="Invicius — useful tools, games and digital experiences.">
   <title>Invicius</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -23,7 +27,7 @@
 
     html {
       min-height: 100%;
-      background: #064f78;
+      background: #030507;
     }
 
     body {
@@ -34,12 +38,13 @@
       overflow-x: hidden;
 
       background:
-        radial-gradient(circle at 16% 18%, rgba(48, 235, 214, 0.34), transparent 28%),
-        radial-gradient(circle at 82% 74%, rgba(38, 112, 255, 0.35), transparent 30%),
-        linear-gradient(145deg, #16c6a2 0%, #087da0 34%, #0962a7 64%, #082f6f 100%);
+        radial-gradient(circle at 15% 18%, rgba(41, 222, 204, 0.12), transparent 30%),
+        radial-gradient(circle at 82% 72%, rgba(38, 112, 255, 0.14), transparent 32%),
+        radial-gradient(circle at 48% 108%, rgba(65, 114, 163, 0.09), transparent 38%),
+        linear-gradient(145deg, #101319 0%, #090d13 38%, #05080d 68%, #010203 100%);
 
-      background-size: 150% 150%, 150% 150%, 220% 220%;
-      animation: pageGlow 6s ease-in-out infinite alternate;
+      background-size: 160% 160%, 160% 160%, 180% 180%, 220% 220%;
+      animation: darkPageGlow 6s ease-in-out infinite alternate;
     }
 
     button,
@@ -173,8 +178,8 @@
         inset 0 2px 0 rgba(255, 255, 255, 0.20),
         inset 0 -8px 16px rgba(12, 49, 133, 0.22);
 
-      font-family: Bahnschrift, "Arial Narrow", "Segoe UI", ui-sans-serif, sans-serif;
-      font-weight: 760;
+      font-family: "Rajdhani", "Segoe UI", ui-sans-serif, sans-serif;
+      font-weight: 600;
       font-size: 1rem;
       letter-spacing: 0.075em;
       text-transform: uppercase;
@@ -548,10 +553,10 @@
     /* ---------------- HOME FEED ---------------- */
     .home-feed{min-width:0;display:flex;flex-direction:column;gap:34px}
     .feed-section{min-width:0}
-    .feed-heading{display:flex;align-items:center;gap:12px;margin:0 0 13px;padding:0 6px;font-size:13px;font-weight:850;letter-spacing:2.2px;text-transform:uppercase;color:rgba(238,255,252,.9)}
-    .feed-heading::before{content:"";width:10px;height:10px;flex:0 0 auto;border-radius:50%;background:linear-gradient(145deg,#171a20,#030405 72%);box-shadow:0 0 0 1px rgba(255,255,255,.10),0 0 16px rgba(73,185,226,.22),inset 0 1px 2px rgba(255,255,255,.12)}
-    .feed-card{position:relative;overflow:hidden;min-height:420px;display:grid;grid-template-columns:minmax(230px,.34fr) minmax(0,.66fr);gap:22px;padding:22px;border:1px solid rgba(255,255,255,.24);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));backdrop-filter:blur(15px);box-shadow:0 24px 60px rgba(5,18,48,.24)}
-    .feed-card::before{content:"";position:absolute;inset:-45%;z-index:-1;background:conic-gradient(from 50deg,rgba(77,245,214,.18),rgba(66,128,255,.18),rgba(194,83,239,.14),rgba(77,245,214,.18));animation:slowSpin 28s linear infinite}
+    .feed-heading{display:flex;align-items:center;gap:0;margin:0 0 13px;padding:0 6px;font-size:13px;font-weight:850;letter-spacing:2.2px;text-transform:uppercase;color:rgba(238,255,252,.9)}
+    .feed-heading::before{content:none;display:none}
+    .feed-card{position:relative;overflow:hidden;min-height:420px;display:grid;grid-template-columns:minmax(230px,.34fr) minmax(0,.66fr);gap:22px;padding:22px;border:1px solid rgba(124,231,255,.28);border-radius:28px;background:radial-gradient(circle at 12% 8%,rgba(82,241,221,.13),transparent 34%),linear-gradient(145deg,rgba(9,118,161,.82),rgba(11,76,151,.76) 58%,rgba(13,55,121,.78));backdrop-filter:blur(15px);box-shadow:0 24px 60px rgba(0,12,35,.38)}
+    .feed-card::before{content:"";position:absolute;inset:-45%;z-index:-1;background:conic-gradient(from 50deg,rgba(77,245,214,.18),rgba(66,128,255,.20),rgba(35,176,224,.14),rgba(77,245,214,.18));animation:slowSpin 28s linear infinite}
     .feed-info{align-self:center;padding:8px 6px 8px 8px}
     .feed-title{margin:0;font-size:clamp(25px,3vw,38px);line-height:1.03;letter-spacing:-1.2px}
     .feed-text{margin:15px 0 0;color:rgba(241,249,255,.76);font-size:15px;line-height:1.62}
@@ -636,6 +641,12 @@
       100% {
         background-position: 100% 45%;
       }
+    }
+
+    @keyframes darkPageGlow {
+      0% { background-position: 0% 0%, 100% 100%, 50% 100%, 0% 50%; }
+      50% { background-position: 24% 16%, 76% 82%, 48% 74%, 52% 50%; }
+      100% { background-position: 44% 30%, 60% 64%, 52% 48%, 100% 50%; }
     }
 
     @keyframes pageGlow {
