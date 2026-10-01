@@ -5,14 +5,26 @@
 :root {
   font-family: Inter, Arial, system-ui, sans-serif;
   color: #17343d;
-  background: #f3f6f7;
+  background: #064f78;
   font-synthesis: none;
+}
+
+html {
+  min-height: 100%;
+  background: #064f78;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-size: 16px;
   line-height: 1.5;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(48, 235, 214, 0.34), transparent 28%),
+    radial-gradient(circle at 82% 74%, rgba(38, 112, 255, 0.35), transparent 30%),
+    linear-gradient(145deg, #16c6a2 0%, #087da0 34%, #0962a7 64%, #082f6f 100%);
+  background-size: 150% 150%, 150% 150%, 220% 220%;
+  animation: pageGlow 6s ease-in-out infinite alternate;
 }
 
 button,
@@ -65,14 +77,15 @@ button {
 }
 
 .header-left { display:flex; align-items:center; gap:20px; min-width:0; }
-.invicius-brand { width:128px; min-width:128px; height:96px; display:flex; align-items:center; justify-content:center; text-decoration:none; }
-.invicius-brand img { width:100%; height:100%; object-fit:contain; display:block; filter:drop-shadow(0 9px 16px rgba(12,27,104,.22)); }
+.invicius-brand { position:relative; width:128px; min-width:128px; height:96px; display:flex; align-items:center; justify-content:center; text-decoration:none; }
+.invicius-brand::before { content:""; position:absolute; inset:0; background:linear-gradient(135deg,#67f7de 0%,#27dce9 30%,#258ee6 64%,#54f0c8 100%); background-size:240% 240%; animation:brandFlow 6s ease-in-out infinite alternate; -webkit-mask:url('../../assets/invicius-logo.png') center/contain no-repeat; mask:url('../../assets/invicius-logo.png') center/contain no-repeat; filter:drop-shadow(0 9px 16px rgba(12,27,104,.24)); pointer-events:none; }
+.invicius-brand img { width:100%; height:100%; object-fit:contain; display:block; opacity:0; }
 
 .calc-brand { display:flex; align-items:center; gap:12px; min-width:0; }
-.calc-brand-mark { width:48px; height:48px; flex:0 0 auto; border-radius:14px; display:flex; align-items:flex-end; justify-content:center; gap:4px; padding:10px 9px; background:linear-gradient(135deg,#52f2d6 0%,#25d7e8 28%,#248de4 62%,#385fe2 100%); box-shadow:0 8px 18px rgba(23,94,177,.30),inset 0 1px 0 rgba(255,255,255,.28); }
+.calc-brand-mark { width:48px; height:48px; flex:0 0 auto; border-radius:14px; display:flex; align-items:flex-end; justify-content:center; gap:4px; padding:10px 9px; background:linear-gradient(135deg,#62f5dc 0%,#26dbea 28%,#258fe7 62%,#51efc8 100%); background-size:240% 240%; animation:brandFlow 6s ease-in-out infinite alternate; box-shadow:0 8px 18px rgba(23,94,177,.30),inset 0 1px 0 rgba(255,255,255,.28); }
 .calc-brand-mark i { display:block; width:6px; border-radius:3px 3px 1px 1px; background:#050709; box-shadow:0 1px 0 rgba(255,255,255,.08); }
 .calc-brand-mark i:nth-child(1){height:17px}.calc-brand-mark i:nth-child(2){height:29px}.calc-brand-mark i:nth-child(3){height:23px}
-.calc-brand-name { font-size:22px; font-weight:820; line-height:1.1; letter-spacing:-.7px; color:transparent; background:linear-gradient(135deg,#65f7df,#28d8ec 36%,#3297ef 72%,#536eff); -webkit-background-clip:text; background-clip:text; white-space:nowrap; }
+.calc-brand-name { font-size:22px; font-weight:820; line-height:1.1; letter-spacing:-.7px; color:transparent; background:linear-gradient(135deg,#67f7de 0%,#27dce9 30%,#258ee6 64%,#54f0c8 100%); background-size:240% 240%; animation:brandFlow 6s ease-in-out infinite alternate; -webkit-background-clip:text; background-clip:text; white-space:nowrap; }
 
 .header-actions { margin-left:auto; display:flex; align-items:center; justify-content:flex-end; gap:24px; }
 .header-menu-wrap { position:relative; }
@@ -89,6 +102,8 @@ button {
 .header-language-wrap .header-menu-panel { left:auto; right:0; width:280px; max-height:420px; overflow:auto; }
 .header-language-option.active { background-color:rgba(84,215,255,.10); box-shadow:inset 0 0 0 1px rgba(91,228,239,.22); }
 
+@keyframes pageGlow { 0%{background-position:0% 0%,100% 100%,0% 50%} 50%{background-position:26% 18%,74% 82%,52% 50%} 100%{background-position:48% 34%,58% 66%,100% 50%} }
+@keyframes brandFlow { 0%{background-position:0% 42%}50%{background-position:58% 58%}100%{background-position:100% 42%} }
 @keyframes buttonFlow { 0%{background-position:0% 45%}50%{background-position:58% 55%}100%{background-position:100% 45%} }
 @keyframes headerGlow { 0%{background-position:0% 20%,100% 0%,0% 50%,0% 50%}100%{background-position:25% 5%,72% 24%,100% 50%,100% 50%} }
 
@@ -147,10 +162,10 @@ main {
   align-items: center;
   justify-content: center;
 
-  border: 1px dashed #c9d4d9;
+  border: 1px dashed rgba(235, 249, 255, 0.48);
   border-radius: 10px;
 
-  color: #7c8b92;
+  color: rgba(242, 250, 255, 0.82);
   gap: 8px;
 
   text-align: center;
@@ -166,7 +181,7 @@ main {
 }
 
 .side-rail small {
-  color: #8c999f;
+  color: rgba(235, 248, 255, 0.68);
 }
 
 /* TYPOGRAPHY */
@@ -1170,4 +1185,9 @@ a.download {
   button {
     transition: background 0.15s ease;
   }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  body, .invicius-brand::before, .calc-brand-mark, .calc-brand-name, .header-menu-button, .site-header { animation: none !important; }
 }
