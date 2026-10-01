@@ -26,16 +26,18 @@ a.download{text-decoration:none}
       minmax(0, 920px)
       minmax(0, 1fr);
 
-    align-items: start;
+    align-items: stretch;
   }
 
   .ad {
     display: flex;
     width: 100%;
     min-width: 0;
-    height: 600px;
-    min-height: 0;
-    align-self: start;
+
+    height: auto;
+    min-height: 600px;
+
+    align-self: stretch;
     margin: 0;
   }
 }
