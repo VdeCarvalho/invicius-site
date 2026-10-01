@@ -39,7 +39,7 @@
         linear-gradient(145deg, #16c6a2 0%, #087da0 34%, #0962a7 64%, #082f6f 100%);
 
       background-size: 150% 150%, 150% 150%, 220% 220%;
-      animation: pageGlow 18s ease-in-out infinite alternate;
+      animation: pageGlow 6s ease-in-out infinite alternate;
     }
 
     button,
@@ -62,13 +62,13 @@
       position: relative;
       z-index: 30;
 
-      min-height: 118px;
-      padding: 14px clamp(18px, 3vw, 54px);
+      min-height: 142px;
+      padding: 12px clamp(22px, 3.4vw, 62px);
 
       display: grid;
       grid-template-columns: auto auto 1fr auto;
       align-items: center;
-      gap: 18px;
+      column-gap: clamp(30px, 3.2vw, 56px);
 
       background:
         radial-gradient(circle at 20% 0%, rgba(255, 119, 199, 0.88), transparent 30%),
@@ -76,7 +76,7 @@
         linear-gradient(180deg, #c65eea 0%, #9139ce 42%, #491180 100%);
 
       background-size: 160% 160%, 160% 160%, 220% 220%;
-      animation: headerGlow 13s ease-in-out infinite alternate;
+      animation: headerGlow 4.4s ease-in-out infinite alternate;
 
       box-shadow:
         0 12px 36px rgba(39, 5, 73, 0.25),
@@ -91,19 +91,16 @@
       align-items: center;
       justify-content: center;
 
-      width: 104px;
-      height: 104px;
+      width: 154px;
+      min-width: 154px;
+      height: 124px;
 
-      margin-bottom: -32px;
+      margin: 0;
 
-      border-radius: 25px;
-      overflow: hidden;
-
-      background: #fff;
-
-      box-shadow:
-        0 15px 34px rgba(24, 6, 58, 0.32),
-        0 0 0 1px rgba(255, 255, 255, 0.45);
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      overflow: visible;
 
       text-decoration: none;
     }
@@ -111,14 +108,16 @@
     .brand-link img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+
+      filter: drop-shadow(0 9px 16px rgba(12, 27, 104, 0.22));
     }
 
     .nav-cluster {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 24px;
     }
 
     .menu-wrap {
@@ -126,44 +125,85 @@
     }
 
     .menu-button {
-      min-width: 126px;
-      height: 48px;
+      position: relative;
+
+      min-width: 132px;
+      height: 50px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      gap: 10px;
 
-      padding: 0 18px;
+      padding: 0 20px;
 
-      border-radius: 15px;
+      border: 0;
+      border-radius: 16px;
 
-      color: white;
-      font-weight: 760;
+      background: transparent;
+
+      font-weight: 780;
       letter-spacing: 0.1px;
 
-      background:
-        linear-gradient(135deg, rgba(20, 203, 220, 0.96), rgba(47, 91, 232, 0.96) 56%, rgba(49, 33, 151, 0.96));
-
-      box-shadow:
-        0 10px 24px rgba(13, 35, 120, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28);
-
       cursor: pointer;
-      transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        filter 160ms ease;
+    }
+
+    .menu-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      border-radius: inherit;
+      padding: 2px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #61f5df 0%,
+          #27c9e8 34%,
+          #318ce8 66%,
+          #5266ff 100%
+        );
+
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .menu-button > span:first-child {
+      color: transparent;
+
+      background:
+        linear-gradient(
+          135deg,
+          #7bffe8 0%,
+          #3dd8ee 38%,
+          #4ba7ff 72%,
+          #7882ff 100%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
     }
 
     .menu-button:hover,
     .menu-button:focus-visible {
       transform: translateY(-2px);
-      filter: brightness(1.08);
-      box-shadow:
-        0 14px 30px rgba(13, 35, 120, 0.30),
-        inset 0 1px 0 rgba(255, 255, 255, 0.30);
+      background: rgba(66, 189, 236, 0.08);
+      filter: brightness(1.12);
       outline: none;
     }
 
     .menu-button .chevron {
+      color: #5fe7ee;
       font-size: 12px;
       transition: transform 160ms ease;
     }
@@ -181,13 +221,21 @@
 
       padding: 9px;
 
-      border: 1px solid rgba(255, 255, 255, 0.24);
+      border: 1px solid rgba(75, 218, 239, 0.38);
       border-radius: 17px;
 
-      background: rgba(17, 22, 68, 0.92);
+      background:
+        linear-gradient(
+          160deg,
+          rgba(112, 31, 165, 0.96),
+          rgba(74, 16, 126, 0.97) 55%,
+          rgba(50, 10, 96, 0.98)
+        );
       backdrop-filter: blur(18px);
 
-      box-shadow: 0 22px 50px rgba(8, 9, 39, 0.34);
+      box-shadow:
+        0 22px 50px rgba(34, 4, 67, 0.38),
+        inset 0 1px 0 rgba(115, 230, 255, 0.10);
 
       opacity: 0;
       visibility: hidden;
@@ -217,13 +265,23 @@
 
       padding: 10px 13px;
 
-      color: #f7fbff;
+      color: transparent;
       text-decoration: none;
       text-align: start;
 
       border-radius: 11px;
 
-      background: transparent;
+      background:
+        linear-gradient(
+          135deg,
+          #7bffe8 0%,
+          #3dd8ee 38%,
+          #4ba7ff 72%,
+          #7882ff 100%
+        );
+      -webkit-background-clip: text;
+      background-clip: text;
+
       cursor: pointer;
     }
 
@@ -231,12 +289,13 @@
     .menu-panel a:focus-visible,
     .menu-panel button:hover,
     .menu-panel button:focus-visible {
-      background: rgba(101, 208, 255, 0.15);
+      background-color: rgba(58, 204, 235, 0.10);
       outline: none;
     }
 
     .menu-panel small {
-      color: rgba(232, 243, 255, 0.62);
+      color: #58dce9;
+      -webkit-text-fill-color: #58dce9;
     }
 
     .language-wrap {
@@ -252,7 +311,8 @@
     }
 
     .language-option.active {
-      background: rgba(84, 215, 255, 0.18);
+      background-color: rgba(84, 215, 255, 0.10);
+      box-shadow: inset 0 0 0 1px rgba(91, 228, 239, 0.22);
     }
 
     /* ---------------- PAGE ---------------- */
@@ -507,15 +567,17 @@
       .site-header {
         min-height: auto;
         grid-template-columns: auto 1fr;
-        gap: 12px;
+        gap: 16px;
+        column-gap: 18px;
         padding: 12px 14px 17px;
       }
 
       .brand-link {
-        width: 82px;
-        height: 82px;
-        margin-bottom: -22px;
-        border-radius: 20px;
+        width: 104px;
+        min-width: 104px;
+        height: 86px;
+        margin: 0;
+        border-radius: 0;
       }
 
       .nav-cluster {
@@ -603,9 +665,10 @@
       }
 
       .brand-link {
-        width: 70px;
-        height: 70px;
-        border-radius: 17px;
+        width: 88px;
+        min-width: 88px;
+        height: 72px;
+        border-radius: 0;
       }
 
       .nav-cluster {
