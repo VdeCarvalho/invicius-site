@@ -68,7 +68,6 @@
       }
       else {c.fillStyle=item.header?'#e7f5ee':'#f7f9fa';c.fillRect(M,item.y,W-2*M,item.height-1);let x=M;
         item.values.forEach((value,i)=>{const width=item.widths[i];c.save();c.beginPath();c.rect(x,item.y,width,item.height);c.clip();c.direction=report.rtl?'rtl':'ltr';c.textAlign='right';c.fillStyle='#17343d';let size=item.header?12:13;c.font=`${item.header?'bold ':''}${size}px Arial, sans-serif`;
-          // Headers wrap; numeric cells fit within their own columns.
           if(item.header){const words=String(value).split(' ');let a='',lines=[];for(const word of words){if(c.measureText(a+' '+word).width>width-16&&a){lines.push(a);a=word;}else a+=(a?' ':'')+word;}lines.push(a);if(lines.length>2){size=10;c.font='bold 10px Arial, sans-serif';lines=[String(value)];}lines.slice(0,2).forEach((line,j)=>c.fillText(line,x+width-8,item.y+7+j*15,width-16));}
           else {while(c.measureText(String(value)).width>width-16&&size>9){size--;c.font=`${size}px Arial, sans-serif`;}c.fillText(String(value),x+width-8,item.y+9,width-16);}c.restore();x+=width;});
       }

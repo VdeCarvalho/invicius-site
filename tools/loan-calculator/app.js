@@ -69,7 +69,7 @@ function pdfReport(){
     return [t('loan')+' '+number(i+1),...(state.target==='amount'?[]:[t('amount')+': '+money(Number(numeric(l.amount)))]),...(state.target==='duration'?[]:[t('duration')+': '+durationText(Number(numeric(l.duration))*(l.durationUnit==='years'?12:1),l.durationUnit)]),...(state.target==='rate'?[]:[t('rate')+': '+rateText(LoanMath.monthlyRate(Number(numeric(l.rate)),l.rateUnit),l.rateUnit)])];
   });
   const summary=[[t('currency'),state.currency],[t('mode'),t(r.approximateSmooth?'approximateLabel':state.mode==='smooth'?'smooth':'standard')],[t('borrowed'),money(r.totalPrincipal)],[t('interest'),money(r.interest)],[t('total'),money(r.total)]];
-  
+
   if(inverse())summary.push([t('monthlyPayment'),money(Number(numeric(state.payment)))]);
   r.periods.forEach(p=>summary.push([periodName(p),money(p.payment)+' '+t('perMonth')]));
   const notes=[NOTES[state.lang][0],NOTES[state.lang][2]];

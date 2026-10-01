@@ -61,7 +61,6 @@ function smoothPlan(loans,peakOnly=false,budget=null){
   const objective=Array(size).fill(0);objective[upper]=-1;if(!peakOnly)objective[lower]=1;
   let x=linearProgram(A,b,objective);
   if(peakOnly)return x[upper]*scale;
-  // Tie-break by total paid, without increasing the optimal spread.
   const spread=Math.max(0,x[upper]-x[lower]);const bound=Array(size).fill(0);bound[upper]=1;bound[lower]=-1;add(bound,spread+1e-10);
   const cost=Array(size).fill(0);vars.forEach((v,k)=>cost[k]=-phases[v.j].length/N);x=linearProgram(A,b,cost);
   const parts=phases.map(()=>loans.map(()=>0));vars.forEach((v,k)=>parts[v.j][v.i]=Math.max(0,x[k])*scale);
@@ -84,12 +83,9 @@ function smoothPlan(loans,peakOnly=false,budget=null){
       for(let i=0;i<loans.length;i++){
         const l=loans[i];if(m>l.n)continue;
         const intr=balances[i]*l.r;
-        // Adjust final installment only for floating-point residuals.
         if(m===l.n)payments[i]=balances[i]+intr;
         const capital=payments[i]-intr;
         if(capital<-1e-7)hasNegativeAmortization=true;
-        // Remaining present value avoids accumulated floating-point error
-        // for very long terms and large rates.
         balances[i]=l.a*factor(l.r,l.n-m);
         if(balances[i]<-0.01||!Number.isFinite(balances[i]))throw Error('infeasible');
         if(Math.abs(balances[i])<1e-7)balances[i]=0;
@@ -127,7 +123,6 @@ function smoothPlan(loans,peakOnly=false,budget=null){
       return {p,n,r,a};
     });
     const N=Math.max(...solved.map(l=>l.n)),rows=[];
-    // Backward present values keep long amortization schedules numerically stable.
     const paths=solved.map(l=>{
       const last=target==='duration'?(l.r===0?l.p-l.a*(l.n-1):l.a/l.r*(-Math.expm1((l.n-1)*Math.log1p(l.r)+Math.log((l.a-l.p*l.r)/l.a)))*(1+l.r)):l.a;
       if(!Number.isFinite(last)||last<=0||last>l.a+.01)throw Error('invalid');
@@ -148,7 +143,6 @@ function smoothPlan(loans,peakOnly=false,budget=null){
   function solveGlobal(raw,target,payment,smooth=false){
     const a=Number(payment);
     if(!raw.length||!String(payment).trim()||!Number.isFinite(a)||a<=0||a>1e12)throw Error('invalidSolver');
-    // Validate only the known fields using neutral values for the unknown.
     const known=normalize(raw.map(l=>({...l,amount:target==='amount'?1:l.amount,duration:target==='duration'?1:l.duration,durationUnit:target==='duration'?'months':l.durationUnit,rate:target==='rate'?0:l.rate})));
     if(target==='duration'){
       const interest=known.reduce((s,l)=>s+l.p*l.r,0);
@@ -162,8 +156,6 @@ function smoothPlan(loans,peakOnly=false,budget=null){
     }
     const N=Math.max(...known.map(l=>l.n));
     if(target==='amount'&&smooth){
-      // Allocate the budget equally to active contracts, then discount each
-      // contract's payments at its own rate to find its initial principal.
       const payments=Array.from({length:N},(_,m)=>{const active=known.filter(l=>m<l.n).length;return known.map(l=>m<l.n?a/active:0);});
       const paths=known.map((l,i)=>{const balances=Array(N+1).fill(0);for(let m=l.n;m>0;m--)balances[m-1]=(balances[m]+payments[m-1][i])/(1+l.r);if(!Number.isFinite(balances[0])||balances[0]<=0||balances[0]>1e12)throw Error('invalidSolver');return balances;});
       let hasNegativeAmortization=false;
@@ -173,7 +165,6 @@ function smoothPlan(loans,peakOnly=false,budget=null){
     }
     let loans;
     if(target==='rate'){
-      
       const cost=r=>smooth?smoothPlan(known.map(l=>({...l,r})),true):known.reduce((s,l)=>s+l.p/factor(r,l.n),0);
       const tolerance=Math.max(1e-8,a*1e-12);
       if(a<cost(0)-tolerance)throw Error('noRate');
@@ -181,7 +172,6 @@ function smoothPlan(loans,peakOnly=false,budget=null){
       if(a>cost(0)+tolerance){let lo=0,hi=a/Math.min(...known.map(l=>l.p));for(let i=0;i<100;i++){const mid=(lo+hi)/2;if(cost(mid)>a)hi=mid;else lo=mid;}rate=(lo+hi)/2;}
       loans=known.map(l=>({...l,r:rate,a:l.p/factor(rate,l.n)}));
     }else if(target==='amount'){
-      // Equal principal shares, explicitly stated in the UI.
       let coefficient;
       coefficient=known.reduce((s,l)=>s+l.a,0);
       const principal=a/coefficient;

@@ -245,8 +245,6 @@
         if(moveLow)lo=m;else hi=m;
       }
       V.formula(5,2,'D97',state.target==='duration'?r.months:resultLoans[0].r,4);
-      // The duration helper cell holds the unrounded root; its cached value is
-      // set from the bisection result below to match the formula exactly.
       if(state.target==='duration')V.cells.get('F2').value.cache=(lo+hi)/2;
       V.widths={0:14,1:20,2:20,3:20,4:22,5:20};
     }
