@@ -91,9 +91,9 @@
       align-items: center;
       justify-content: center;
 
-      width: 128px;
-      min-width: 128px;
-      height: 96px;
+      width: 118px;
+      min-width: 118px;
+      height: 88px;
 
       margin: 0;
 
@@ -106,26 +106,7 @@
     }
 
     .brand-link::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          135deg,
-          #67f7de 0%,
-          #27dce9 30%,
-          #258ee6 64%,
-          #54f0c8 100%
-        );
-      background-size: 240% 240%;
-      animation: brandFlow 6s ease-in-out infinite alternate;
-
-      -webkit-mask: url("assets/invicius-logo.png") center / contain no-repeat;
-      mask: url("assets/invicius-logo.png") center / contain no-repeat;
-
-      filter: drop-shadow(0 9px 16px rgba(12, 27, 104, 0.24));
-      pointer-events: none;
+      content: none;
     }
 
     .brand-link img {
@@ -133,7 +114,9 @@
       height: 100%;
       object-fit: contain;
       display: block;
-      opacity: 0;
+      opacity: 1;
+      animation: logoChromatic 6s ease-in-out infinite alternate;
+      filter: saturate(1.16) brightness(1.06) drop-shadow(0 9px 16px rgba(12, 27, 104, 0.24));
     }
 
     .nav-cluster {
@@ -190,9 +173,11 @@
         inset 0 2px 0 rgba(255, 255, 255, 0.20),
         inset 0 -8px 16px rgba(12, 49, 133, 0.22);
 
-      font-weight: 800;
-      font-size: 0.98rem;
-      letter-spacing: 0.12px;
+      font-family: Bahnschrift, "Arial Narrow", "Segoe UI", ui-sans-serif, sans-serif;
+      font-weight: 760;
+      font-size: 1rem;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
 
       cursor: pointer;
 
@@ -226,13 +211,14 @@
 
     .menu-button > span:first-child,
     .menu-button .chevron {
-      color: #030507;
-      background: none;
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      -webkit-text-fill-color: #030507;
-      animation: none;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
+      color: transparent;
+      background: linear-gradient(135deg, #010203 0%, #0b1016 28%, #18303d 55%, #070a0e 78%, #010203 100%);
+      background-size: 240% 240%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: headerInkFlow 4.4s ease-in-out infinite alternate;
+      text-shadow: none;
     }
 
     .menu-button > span:first-child {
@@ -662,6 +648,18 @@
     }
 
     @keyframes brandFlow {
+      0% { background-position: 0% 42%; }
+      50% { background-position: 58% 58%; }
+      100% { background-position: 100% 42%; }
+    }
+
+    @keyframes logoChromatic {
+      0% { filter: hue-rotate(-8deg) saturate(1.12) brightness(1.04) drop-shadow(0 9px 16px rgba(12, 27, 104, 0.24)); }
+      50% { filter: hue-rotate(12deg) saturate(1.28) brightness(1.10) drop-shadow(0 9px 18px rgba(22, 177, 205, 0.24)); }
+      100% { filter: hue-rotate(30deg) saturate(1.30) brightness(1.08) drop-shadow(0 9px 18px rgba(33, 193, 163, 0.24)); }
+    }
+
+    @keyframes headerInkFlow {
       0% { background-position: 0% 42%; }
       50% { background-position: 58% 58%; }
       100% { background-position: 100% 42%; }
