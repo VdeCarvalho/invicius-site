@@ -62,13 +62,13 @@
       position: relative;
       z-index: 30;
 
-      min-height: 142px;
-      padding: 12px clamp(22px, 3.4vw, 62px);
+      min-height: 116px;
+      padding: 9px clamp(20px, 3.1vw, 54px);
 
       display: grid;
       grid-template-columns: auto auto 1fr auto;
       align-items: center;
-      column-gap: clamp(30px, 3.2vw, 56px);
+      column-gap: clamp(24px, 2.7vw, 46px);
 
       background:
         radial-gradient(circle at 20% 0%, rgba(255, 119, 199, 0.88), transparent 30%),
@@ -91,9 +91,9 @@
       align-items: center;
       justify-content: center;
 
-      width: 154px;
-      min-width: 154px;
-      height: 124px;
+      width: 128px;
+      min-width: 128px;
+      height: 96px;
 
       margin: 0;
 
@@ -117,7 +117,7 @@
     .nav-cluster {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 24px;
     }
 
     .menu-wrap {
@@ -129,15 +129,15 @@
       isolation: isolate;
       overflow: hidden;
 
-      min-width: 150px;
-      height: 60px;
+      min-width: 136px;
+      height: 52px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
 
-      padding: 0 24px;
+      padding: 0 21px;
 
       border: 1px solid rgba(107, 255, 232, 0.34);
       border-radius: 18px;
@@ -161,7 +161,7 @@
         inset 0 -8px 16px rgba(12, 49, 133, 0.22);
 
       font-weight: 800;
-      font-size: 1.06rem;
+      font-size: 0.98rem;
       letter-spacing: 0.12px;
 
       cursor: pointer;
@@ -214,7 +214,7 @@
     }
 
     .menu-button > span:first-child {
-      font-size: 1.08em;
+      font-size: 1.04em;
     }
 
     .menu-button:hover,
@@ -535,12 +535,44 @@
       transform-origin: center;
     }
 
+
+    /* ---------------- HOME FEED ---------------- */
+    .home-feed{min-width:0;display:flex;flex-direction:column;gap:34px}
+    .feed-section{min-width:0}
+    .feed-heading{display:flex;align-items:center;gap:12px;margin:0 0 13px;padding:0 6px;font-size:13px;font-weight:850;letter-spacing:2.2px;text-transform:uppercase;color:rgba(238,255,252,.9)}
+    .feed-heading::before{content:"";width:10px;height:10px;flex:0 0 auto;border-radius:50%;background:linear-gradient(135deg,#68ffe5,#2bbbe8 58%,#5b69ff);box-shadow:0 0 18px rgba(61,225,231,.55)}
+    .feed-card{position:relative;overflow:hidden;min-height:420px;display:grid;grid-template-columns:minmax(230px,.34fr) minmax(0,.66fr);gap:22px;padding:22px;border:1px solid rgba(255,255,255,.24);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.06));backdrop-filter:blur(15px);box-shadow:0 24px 60px rgba(5,18,48,.24)}
+    .feed-card::before{content:"";position:absolute;inset:-45%;z-index:-1;background:conic-gradient(from 50deg,rgba(77,245,214,.18),rgba(66,128,255,.18),rgba(194,83,239,.14),rgba(77,245,214,.18));animation:slowSpin 28s linear infinite}
+    .feed-info{align-self:center;padding:8px 6px 8px 8px}
+    .feed-kicker{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;font-size:11px;font-weight:850;letter-spacing:1.7px;text-transform:uppercase;color:#91f8e5}
+    .feed-title{margin:0;font-size:clamp(25px,3vw,38px);line-height:1.03;letter-spacing:-1.2px}
+    .feed-text{margin:15px 0 0;color:rgba(241,249,255,.76);font-size:15px;line-height:1.62}
+    .feed-action{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:11px 15px;border-radius:13px;text-decoration:none;color:#f5ffff;font-size:13px;font-weight:800;background:rgba(26,111,163,.25);box-shadow:inset 0 0 0 1px rgba(89,240,225,.28);transition:transform 160ms ease,background 160ms ease}
+    .feed-action:hover,.feed-action:focus-visible{transform:translateY(-2px);background:rgba(35,143,189,.34);outline:none}
+    .feed-action.disabled{pointer-events:none;opacity:.72}
+    .preview-window{position:relative;min-width:0;min-height:365px;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:21px;background:#eef4f6;box-shadow:0 18px 36px rgba(0,0,0,.22)}
+    .preview-browserbar{height:32px;display:flex;align-items:center;gap:6px;padding:0 12px;background:#ecf0f3;border-bottom:1px solid rgba(20,42,55,.1)}
+    .preview-browserbar i{width:8px;height:8px;border-radius:50%;background:#bdc8cd}
+    .preview-address{min-width:0;flex:1;margin-left:7px;padding:4px 9px;overflow:hidden;border-radius:8px;color:#708087;background:rgba(255,255,255,.72);font-size:9px;white-space:nowrap;text-overflow:ellipsis}
+    .preview-stage{position:absolute;inset:32px 0 0;overflow:hidden;background:#f3f6f7}
+    .loan-preview iframe{position:absolute;top:0;left:0;width:1180px;height:920px;border:0;pointer-events:none;transform:scale(.48);transform-origin:0 0;background:#f3f6f7}
+    .preview-cursor{position:absolute;z-index:5;width:22px;height:28px;filter:drop-shadow(0 4px 5px rgba(0,0,0,.25));animation:cursorLoan 10s ease-in-out infinite;pointer-events:none}
+    .preview-cursor::before{content:"";position:absolute;inset:0;clip-path:polygon(0 0,0 85%,24% 64%,38% 100%,52% 93%,38% 59%,70% 57%);background:white;box-shadow:inset 0 0 0 1px rgba(8,30,44,.45)}
+    .click-ring{position:absolute;z-index:4;width:42px;height:42px;border:2px solid rgba(47,213,222,.78);border-radius:50%;opacity:0;pointer-events:none;animation:clickPulse 10s ease-out infinite}
+    .tobias-preview .preview-stage{display:grid;place-items:center;background:radial-gradient(circle at 18% 22%,rgba(74,237,211,.28),transparent 26%),radial-gradient(circle at 84% 76%,rgba(80,92,234,.3),transparent 30%),linear-gradient(145deg,#102f56,#123d71 45%,#261f6b)}
+    .tobias-empty-page{width:min(78%,480px);padding:34px 28px;text-align:center;border:1px solid rgba(255,255,255,.19);border-radius:22px;background:rgba(8,19,58,.34);backdrop-filter:blur(10px);box-shadow:0 20px 45px rgba(0,0,0,.2);animation:tobiasFloat 5s ease-in-out infinite alternate}
+    .tobias-pixel{width:58px;height:58px;margin:0 auto 18px;display:grid;place-items:center;border-radius:16px;color:#efffff;background:linear-gradient(145deg,#2da7f4,#3347b7);box-shadow:0 0 30px rgba(60,188,244,.34);font-weight:900;font-size:22px}
+    .tobias-empty-page h3{margin:0;font-size:clamp(21px,3vw,31px);line-height:1.1}
+    .tobias-empty-page p{margin:13px 0 0;color:rgba(239,251,255,.68);font-size:13px}
+    .tobias-preview .preview-cursor{animation-name:cursorTobias;animation-duration:8s}
+    .tobias-preview .click-ring{animation-name:clickPulseTobias;animation-duration:8s}
+
     .mobile-rail {
       display: none;
     }
 
     .site-footer {
-      padding: 0 20px 30px;
+      padding: 0 20px 18px;
       text-align: center;
       color: rgba(243, 250, 255, 0.62);
       font-size: 12px;
@@ -591,6 +623,13 @@
       to   { opacity: 1; transform: scale(1.12); }
     }
 
+
+    @keyframes cursorLoan{0%,8%{left:72%;top:77%;transform:scale(1)}23%{left:38%;top:47%}34%{left:38%;top:47%;transform:scale(.86)}46%{left:55%;top:57%;transform:scale(1)}63%{left:55%;top:57%;transform:scale(.86)}79%,100%{left:72%;top:77%;transform:scale(1)}}
+    @keyframes clickPulse{0%,27%,38%,57%,68%,100%{opacity:0;transform:scale(.45);left:36%;top:43%}31%{opacity:.85;transform:scale(1.15);left:36%;top:43%}61%{opacity:.85;transform:scale(1.15);left:53%;top:53%}}
+    @keyframes cursorTobias{0%,20%{left:18%;top:74%}48%{left:50%;top:55%}60%{left:50%;top:55%;transform:scale(.84)}80%,100%{left:75%;top:28%;transform:scale(1)}}
+    @keyframes clickPulseTobias{0%,53%,66%,100%{opacity:0;transform:scale(.45);left:48%;top:51%}58%{opacity:.8;transform:scale(1.1);left:48%;top:51%}}
+    @keyframes tobiasFloat{from{transform:translateY(8px)}to{transform:translateY(-8px)}}
+
     /* ---------------- RESPONSIVE ---------------- */
 
     @media (max-width: 1100px) {
@@ -620,9 +659,9 @@
       }
 
       .brand-link {
-        width: 104px;
-        min-width: 104px;
-        height: 86px;
+        width: 92px;
+        min-width: 92px;
+        height: 72px;
         margin: 0;
         border-radius: 0;
       }
@@ -688,6 +727,11 @@
         min-height: 270px;
       }
 
+      .feed-card{grid-template-columns:1fr;min-height:0;padding:18px}
+      .feed-info{padding:3px 3px 0}
+      .preview-window{min-height:320px}
+      .loan-preview iframe{transform:scale(.42)}
+
       .mobile-rail {
         margin-top: 18px;
 
@@ -712,9 +756,9 @@
       }
 
       .brand-link {
-        width: 88px;
-        min-width: 88px;
-        height: 72px;
+        width: 80px;
+        min-width: 80px;
+        height: 64px;
         border-radius: 0;
       }
 
@@ -797,93 +841,36 @@
         <span data-i18n="reserved">Reserved ad space</span>
       </aside>
 
-      <section class="hero-card">
-        <div class="hero-copy">
-          <p class="eyebrow">INVICIUS</p>
-
-          <h1 class="hero-title" data-i18n="heroTitle">
-            Technology, tools and games in one place.
-          </h1>
-
-          <p class="hero-text" data-i18n="heroText">
-            Explore useful digital tools and original interactive experiences built to be simple, fast and accessible anywhere.
-          </p>
+      <section class="home-feed" aria-label="Invicius feed">
+        <div class="feed-section">
+          <h2 class="feed-heading" data-i18n="feedTools">Tools</h2>
+          <article class="feed-card">
+            <div class="feed-info">
+              <div class="feed-kicker" data-i18n="featuredTool">Featured tool</div>
+              <h3 class="feed-title" data-i18n="loanCalculator">Loan Calculator</h3>
+              <p class="feed-text" data-i18n="loanFeedText">Compare loans, calculate repayments and explore complete payment schedules.</p>
+              <a class="feed-action" href="/tools/loan-calculator/"><span data-i18n="openTool">Open tool</span><span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="preview-window loan-preview" aria-label="Loan Calculator animated preview">
+              <div class="preview-browserbar"><i></i><i></i><i></i><span class="preview-address">invicius.com/tools/loan-calculator/</span></div>
+              <div class="preview-stage"><iframe id="loan-preview-frame" src="/tools/loan-calculator/" title="Loan Calculator preview" loading="lazy" tabindex="-1"></iframe><span class="click-ring" aria-hidden="true"></span><span class="preview-cursor" aria-hidden="true"></span></div>
+            </div>
+          </article>
         </div>
-
-        <div class="tech-visual" aria-label="Abstract technology illustration">
-          <svg viewBox="0 0 800 440" role="img" aria-hidden="true">
-            <defs>
-              <linearGradient id="sphere" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#71FFE3"/>
-                <stop offset="44%" stop-color="#24BFE5"/>
-                <stop offset="100%" stop-color="#5C54FF"/>
-              </linearGradient>
-
-              <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#8FFFF0" stop-opacity="0.18"/>
-                <stop offset="45%" stop-color="#8FFFF0" stop-opacity="0.95"/>
-                <stop offset="100%" stop-color="#8D87FF" stop-opacity="0.18"/>
-              </linearGradient>
-
-              <radialGradient id="glow">
-                <stop offset="0%" stop-color="#9EFFF0" stop-opacity="0.95"/>
-                <stop offset="100%" stop-color="#4F94FF" stop-opacity="0"/>
-              </radialGradient>
-
-              <filter id="blur">
-                <feGaussianBlur stdDeviation="12"/>
-              </filter>
-            </defs>
-
-            <ellipse cx="400" cy="220" rx="220" ry="220" fill="url(#glow)" opacity="0.18" filter="url(#blur)"/>
-
-            <g class="orbit">
-              <ellipse cx="400" cy="220" rx="300" ry="112"
-                       fill="none" stroke="url(#line)" stroke-width="2"/>
-              <circle class="pulse-dot" cx="700" cy="220" r="8" fill="#8FFFF0"/>
-              <circle class="pulse-dot" cx="100" cy="220" r="5" fill="#948CFF"/>
-            </g>
-
-            <g class="orbit reverse">
-              <ellipse cx="400" cy="220" rx="262" ry="178"
-                       fill="none" stroke="url(#line)" stroke-width="1.5"
-                       transform="rotate(-28 400 220)"/>
-              <circle class="pulse-dot" cx="610" cy="92" r="7" fill="#FF8CDF"/>
-              <circle class="pulse-dot" cx="190" cy="348" r="6" fill="#78FFE3"/>
-            </g>
-
-            <circle cx="400" cy="220" r="126" fill="url(#sphere)" opacity="0.96"/>
-
-            <path d="M310 205 C355 145 445 145 490 205
-                     C455 177 422 175 400 195
-                     C378 175 345 177 310 205Z"
-                  fill="#C7FFF7" opacity="0.38"/>
-
-            <path d="M317 272 C355 315 445 318 490 270"
-                  fill="none" stroke="#072D78" stroke-opacity="0.32" stroke-width="12" stroke-linecap="round"/>
-
-            <g fill="none" stroke="#D8FFF8" stroke-width="3" stroke-linecap="round" opacity="0.86">
-              <path d="M400 94 V149"/>
-              <path d="M400 291 V346"/>
-              <path d="M274 220 H330"/>
-              <path d="M470 220 H526"/>
-              <path d="M315 135 L350 170"/>
-              <path d="M485 135 L450 170"/>
-              <path d="M315 305 L350 270"/>
-              <path d="M485 305 L450 270"/>
-            </g>
-
-            <g fill="#E8FFFB">
-              <circle cx="400" cy="147" r="7"/>
-              <circle cx="400" cy="293" r="7"/>
-              <circle cx="327" cy="220" r="7"/>
-              <circle cx="473" cy="220" r="7"/>
-              <circle cx="348" cy="168" r="6"/>
-              <circle cx="452" cy="168" r="6"/>
-              <circle cx="348" cy="272" r="6"/>
-              <circle cx="452" cy="272" r="6"/>
-            </g>
-          </svg>
+        <div class="feed-section">
+          <h2 class="feed-heading" data-i18n="feedGames">Games</h2>
+          <article class="feed-card">
+            <div class="feed-info">
+              <div class="feed-kicker" data-i18n="featuredGame">Featured game</div>
+              <h3 class="feed-title">The History of the Great Tobias</h3>
+              <p class="feed-text" data-i18n="tobiasFeedText">The future home of Tobias and his adventure. The game page is being prepared.</p>
+              <span class="feed-action disabled"><span data-i18n="comingSoon">Coming soon</span><span aria-hidden="true">✦</span></span>
+            </div>
+            <div class="preview-window tobias-preview" aria-label="The History of the Great Tobias page preview">
+              <div class="preview-browserbar"><i></i><i></i><i></i><span class="preview-address">invicius.com/games/the-history-of-the-great-tobias/</span></div>
+              <div class="preview-stage"><div class="tobias-empty-page"><div class="tobias-pixel">T</div><h3>The History of the Great Tobias</h3><p data-i18n="tobiasPageStatus">Page under construction</p></div><span class="click-ring" aria-hidden="true"></span><span class="preview-cursor" aria-hidden="true"></span></div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -926,6 +913,15 @@
         loanCalculator: "Loan Calculator",
         heroTitle: "Technology, tools and games in one place.",
         heroText: "Explore useful digital tools and original interactive experiences built to be simple, fast and accessible anywhere.",
+        feedTools: "Tools",
+        feedGames: "Games",
+        featuredTool: "Featured tool",
+        featuredGame: "Featured game",
+        loanFeedText: "Compare loans, calculate repayments and explore complete payment schedules.",
+        openTool: "Open tool",
+        tobiasFeedText: "The future home of Tobias and his adventure. The game page is being prepared.",
+        comingSoon: "Coming soon",
+        tobiasPageStatus: "Page under construction",
         advertisement: "Advertisement",
         reserved: "Reserved ad space"
       },
@@ -937,6 +933,15 @@
         loanCalculator: "贷款计算器",
         heroTitle: "科技、工具与游戏，尽在一处。",
         heroText: "探索实用的数字工具和原创互动体验，简单、快速，并可随时随地使用。",
+        feedTools: "工具",
+        feedGames: "游戏",
+        featuredTool: "精选工具",
+        featuredGame: "精选游戏",
+        loanFeedText: "比较贷款、计算还款金额并查看完整的还款计划。",
+        openTool: "打开工具",
+        tobiasFeedText: "Tobias 和他的冒险未来将在这里展开。游戏页面正在准备中。",
+        comingSoon: "即将推出",
+        tobiasPageStatus: "页面建设中",
         advertisement: "广告",
         reserved: "预留广告位"
       },
@@ -948,6 +953,15 @@
         loanCalculator: "ऋण कैलकुलेटर",
         heroTitle: "तकनीक, टूल्स और गेम्स — एक ही जगह।",
         heroText: "उपयोगी डिजिटल टूल्स और मौलिक इंटरैक्टिव अनुभव खोजें, जिन्हें सरल, तेज़ और कहीं से भी उपयोग करने योग्य बनाया गया है।",
+        feedTools: "टूल्स",
+        feedGames: "गेम्स",
+        featuredTool: "विशेष टूल",
+        featuredGame: "विशेष गेम",
+        loanFeedText: "ऋणों की तुलना करें, किस्तें गणना करें और पूरा भुगतान कार्यक्रम देखें।",
+        openTool: "टूल खोलें",
+        tobiasFeedText: "Tobias और उसके रोमांच का भविष्य का घर। गेम पेज तैयार किया जा रहा है।",
+        comingSoon: "जल्द आ रहा है",
+        tobiasPageStatus: "पेज निर्माणाधीन है",
         advertisement: "विज्ञापन",
         reserved: "विज्ञापन के लिए आरक्षित स्थान"
       },
@@ -959,6 +973,15 @@
         loanCalculator: "Calculadora de préstamos",
         heroTitle: "Tecnología, herramientas y juegos en un solo lugar.",
         heroText: "Descubre herramientas digitales útiles y experiencias interactivas originales, creadas para ser simples, rápidas y accesibles desde cualquier lugar.",
+        feedTools: "Herramientas",
+        feedGames: "Juegos",
+        featuredTool: "Herramienta destacada",
+        featuredGame: "Juego destacado",
+        loanFeedText: "Compara préstamos, calcula cuotas y consulta calendarios completos de pago.",
+        openTool: "Abrir herramienta",
+        tobiasFeedText: "El futuro hogar de Tobias y su aventura. La página del juego está en preparación.",
+        comingSoon: "Próximamente",
+        tobiasPageStatus: "Página en construcción",
         advertisement: "Publicidad",
         reserved: "Espacio publicitario reservado"
       },
@@ -970,6 +993,15 @@
         loanCalculator: "حاسبة القروض",
         heroTitle: "التكنولوجيا والأدوات والألعاب في مكان واحد.",
         heroText: "اكتشف أدوات رقمية مفيدة وتجارب تفاعلية أصلية صُممت لتكون بسيطة وسريعة ومتاحة من أي مكان.",
+        feedTools: "الأدوات",
+        feedGames: "الألعاب",
+        featuredTool: "أداة مميزة",
+        featuredGame: "لعبة مميزة",
+        loanFeedText: "قارن القروض واحسب الأقساط واستعرض جداول السداد الكاملة.",
+        openTool: "فتح الأداة",
+        tobiasFeedText: "المكان المستقبلي لتوبياس ومغامرته. صفحة اللعبة قيد الإعداد.",
+        comingSoon: "قريبًا",
+        tobiasPageStatus: "الصفحة قيد الإنشاء",
         advertisement: "إعلان",
         reserved: "مساحة إعلانية محجوزة"
       },
@@ -981,6 +1013,15 @@
         loanCalculator: "Calculateur de prêt",
         heroTitle: "Technologie, outils et jeux au même endroit.",
         heroText: "Découvrez des outils numériques utiles et des expériences interactives originales, conçus pour être simples, rapides et accessibles partout.",
+        feedTools: "Outils",
+        feedGames: "Jeux",
+        featuredTool: "Outil à la une",
+        featuredGame: "Jeu à la une",
+        loanFeedText: "Comparez des prêts, calculez les mensualités et consultez des échéanciers complets.",
+        openTool: "Ouvrir l’outil",
+        tobiasFeedText: "Le futur espace de Tobias et de son aventure. La page du jeu est en préparation.",
+        comingSoon: "Bientôt disponible",
+        tobiasPageStatus: "Page en construction",
         advertisement: "Publicité",
         reserved: "Espace publicitaire réservé"
       },
@@ -992,6 +1033,15 @@
         loanCalculator: "Кредитный калькулятор",
         heroTitle: "Технологии, инструменты и игры — в одном месте.",
         heroText: "Откройте для себя полезные цифровые инструменты и оригинальные интерактивные проекты, созданные для простоты, скорости и доступности из любой точки мира.",
+        feedTools: "Инструменты",
+        feedGames: "Игры",
+        featuredTool: "Рекомендуемый инструмент",
+        featuredGame: "Рекомендуемая игра",
+        loanFeedText: "Сравнивайте кредиты, рассчитывайте платежи и изучайте полный график выплат.",
+        openTool: "Открыть инструмент",
+        tobiasFeedText: "Будущий дом Тобиаса и его приключения. Страница игры готовится.",
+        comingSoon: "Скоро",
+        tobiasPageStatus: "Страница в разработке",
         advertisement: "Реклама",
         reserved: "Место для рекламы"
       },
@@ -1003,6 +1053,15 @@
         loanCalculator: "ঋণ ক্যালকুলেটর",
         heroTitle: "প্রযুক্তি, টুলস ও গেমস — সব এক জায়গায়।",
         heroText: "সহজ, দ্রুত এবং যেকোনো স্থান থেকে ব্যবহারযোগ্য ডিজিটাল টুলস ও মৌলিক ইন্টারঅ্যাকটিভ অভিজ্ঞতা আবিষ্কার করুন।",
+        feedTools: "টুলস",
+        feedGames: "গেমস",
+        featuredTool: "নির্বাচিত টুল",
+        featuredGame: "নির্বাচিত গেম",
+        loanFeedText: "ঋণ তুলনা করুন, কিস্তি হিসাব করুন এবং সম্পূর্ণ পরিশোধের সময়সূচি দেখুন।",
+        openTool: "টুল খুলুন",
+        tobiasFeedText: "Tobias এবং তার অভিযানের ভবিষ্যৎ ঘর। গেমের পেজ প্রস্তুত করা হচ্ছে।",
+        comingSoon: "শীঘ্রই আসছে",
+        tobiasPageStatus: "পেজ নির্মাণাধীন",
         advertisement: "বিজ্ঞাপন",
         reserved: "বিজ্ঞাপনের জন্য সংরক্ষিত স্থান"
       },
@@ -1014,6 +1073,15 @@
         loanCalculator: "Calculadora de empréstimos",
         heroTitle: "Tecnologia, ferramentas e jogos em um só lugar.",
         heroText: "Explore ferramentas digitais úteis e experiências interativas originais, criadas para serem simples, rápidas e acessíveis de qualquer lugar.",
+        feedTools: "Ferramentas",
+        feedGames: "Jogos",
+        featuredTool: "Ferramenta em destaque",
+        featuredGame: "Jogo em destaque",
+        loanFeedText: "Compare empréstimos, calcule parcelas e explore cronogramas completos de pagamento.",
+        openTool: "Abrir ferramenta",
+        tobiasFeedText: "O futuro espaço do Tobias e de sua aventura. A página do jogo está sendo preparada.",
+        comingSoon: "Em breve",
+        tobiasPageStatus: "Página em construção",
         advertisement: "Publicidade",
         reserved: "Espaço reservado para anúncio"
       },
@@ -1025,6 +1093,15 @@
         loanCalculator: "Kalkulator pinjaman",
         heroTitle: "Teknologi, alat, dan gim dalam satu tempat.",
         heroText: "Jelajahi alat digital yang berguna dan pengalaman interaktif orisinal yang dibuat agar sederhana, cepat, dan dapat diakses dari mana saja.",
+        feedTools: "Alat",
+        feedGames: "Gim",
+        featuredTool: "Alat unggulan",
+        featuredGame: "Gim unggulan",
+        loanFeedText: "Bandingkan pinjaman, hitung cicilan, dan lihat jadwal pembayaran lengkap.",
+        openTool: "Buka alat",
+        tobiasFeedText: "Rumah masa depan Tobias dan petualangannya. Halaman gim sedang disiapkan.",
+        comingSoon: "Segera hadir",
+        tobiasPageStatus: "Halaman sedang dibuat",
         advertisement: "Iklan",
         reserved: "Ruang iklan tersedia"
       },
@@ -1036,6 +1113,15 @@
         loanCalculator: "قرض کیلکولیٹر",
         heroTitle: "ٹیکنالوجی، ٹولز اور گیمز — سب ایک جگہ۔",
         heroText: "مفید ڈیجیٹل ٹولز اور منفرد انٹرایکٹو تجربات دریافت کریں جو سادہ، تیز اور ہر جگہ قابلِ رسائی بنائے گئے ہیں۔",
+        feedTools: "ٹولز",
+        feedGames: "گیمز",
+        featuredTool: "نمایاں ٹول",
+        featuredGame: "نمایاں گیم",
+        loanFeedText: "قرضوں کا موازنہ کریں، اقساط کا حساب لگائیں اور مکمل ادائیگی کا شیڈول دیکھیں۔",
+        openTool: "ٹول کھولیں",
+        tobiasFeedText: "Tobias اور اس کی مہم کا مستقبل کا گھر۔ گیم کا صفحہ تیار کیا جا رہا ہے۔",
+        comingSoon: "جلد آرہا ہے",
+        tobiasPageStatus: "صفحہ زیر تعمیر ہے",
         advertisement: "اشتہار",
         reserved: "اشتہار کے لیے مختص جگہ"
       }
@@ -1109,17 +1195,74 @@
         }
       });
 
-      localStorage.setItem("invicius_language_v2", selected);
+      localStorage.setItem("invicius_language_v3", selected);
       renderLanguageMenu(selected);
+
+      const previewFrame = document.getElementById("loan-preview-frame");
+      try {
+        const previewLanguage = previewFrame?.contentDocument?.querySelector("#language");
+        if (previewLanguage && previewLanguage.value !== selected) {
+          previewLanguage.value = selected;
+          previewLanguage.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      } catch (_) {}
     }
 
-    const savedLanguage = localStorage.getItem("invicius_language_v2");
+    const savedLanguage = localStorage.getItem("invicius_language_v3");
 
-    const initialLanguage = savedLanguage || "en";
+    const browserLanguages = [
+      ...(navigator.languages || []),
+      navigator.language || "en"
+    ].map(language => language.toLowerCase().split("-")[0]);
+
+    const detectedLanguage = browserLanguages.find(language => copy[language]) || "en";
+    const initialLanguage = savedLanguage || detectedLanguage;
+
+    function animateLoanPreview() {
+      const frame = document.getElementById("loan-preview-frame");
+      if (!frame) return;
+
+      const run = () => {
+        try {
+          const doc = frame.contentDocument;
+          if (!doc) return;
+
+          const lang = doc.querySelector("#language");
+          if (lang) {
+            lang.value = document.documentElement.lang;
+            lang.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+
+          setTimeout(() => {
+            try {
+              const amount = doc.querySelector('[data-field="amount"]');
+              const duration = doc.querySelector('[data-field="duration"]');
+              const rate = doc.querySelector('[data-field="rate"]');
+              const fill = (el, value) => {
+                if (!el) return;
+                el.value = value;
+                el.dispatchEvent(new Event("input", { bubbles: true }));
+              };
+              fill(amount, "260000");
+              setTimeout(() => fill(duration, "25"), 1100);
+              setTimeout(() => fill(rate, "3.2"), 2200);
+              setTimeout(() => doc.querySelector("#calculator")?.requestSubmit(), 3400);
+            } catch (_) {}
+          }, 700);
+
+          setTimeout(() => {
+            try { frame.contentWindow.location.reload(); } catch (_) {}
+          }, 9000);
+        } catch (_) {}
+      };
+
+      frame.addEventListener("load", run);
+    }
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
     setLanguage(initialLanguage);
+    animateLoanPreview();
   </script>
 </body>
 </html>
