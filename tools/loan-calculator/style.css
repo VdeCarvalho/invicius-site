@@ -1521,7 +1521,7 @@ a { color: #6fead8; }
   .calc-brand-mark i:nth-child(1){height:14px}.calc-brand-mark i:nth-child(2){height:24px}.calc-brand-mark i:nth-child(3){height:19px}
   .calc-brand-name { font-size:17px; white-space:normal; max-width:150px; }
   .header-actions { margin-left:auto; flex:1 1 520px; display:grid; grid-template-columns:minmax(0,2fr) minmax(150px,1fr); gap:8px; }
-  .nav-cluster { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .nav-cluster { display:grid; grid-template-columns:1fr; gap:8px; }
   .language-wrap { justify-self:stretch; }
   .language-wrap .menu-button { width:100%; }
   .language-wrap .menu-panel { right:0; left:0; width:auto; }
