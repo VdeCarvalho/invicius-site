@@ -7,7 +7,7 @@
     return loans.map(l=>{
       const p=Number(l.amount),duration=Number(l.duration),rate=Number(l.rate);
       const n=duration*(l.durationUnit==='years'?12:1),r=monthlyRate(rate,l.rateUnit);
-      if(!['years','months'].includes(l.durationUnit)||!['years','months'].includes(l.rateUnit)||!String(l.amount).trim()||!String(l.duration).trim()||!String(l.rate).trim()||!Number.isFinite(p)||p<=0||p>1e12||!Number.isInteger(duration)||duration<=0||n>12000||!Number.isFinite(rate)||rate<0||rate>100||Math.abs(rate*100-Math.round(rate*100))>1e-7)throw Error('invalid');
+      if(!['years','months'].includes(l.durationUnit)||!['years','months'].includes(l.rateUnit)||!String(l.amount).trim()||!String(l.duration).trim()||!String(l.rate).trim()||!Number.isFinite(p)||p<0||(p===0&&!l._downPaymentApplied)||p>1e12||!Number.isInteger(duration)||duration<=0||n>12000||!Number.isFinite(rate)||rate<0||rate>100||Math.abs(rate*100-Math.round(rate*100))>1e-7)throw Error('invalid');
       return {p,n,r,a:p/factor(r,n)};
     });
   }
@@ -53,6 +53,7 @@ function smoothPlan(loans,peakOnly=false,budget=null){
   const phases=ends.map((end,j)=>({start:j?ends[j-1]:0,end,length:end-(j?ends[j-1]:0)}));
   const vars=[];loans.forEach((l,i)=>phases.forEach((phase,j)=>{if(phase.end<=l.n)vars.push({i,j});}));
   const upper=vars.length,lower=upper+1,size=lower+1;
+  if(loans.every(l=>l.p===0))return originalSchedule(loans,false);
   const scale=loans.reduce((s,l)=>s+l.p/factor(l.r,l.n),0),A=[],b=[];
   function add(row,rhs){A.push(row);b.push(rhs);}
   loans.forEach((l,i)=>{const row=Array(size).fill(0);vars.forEach((v,k)=>{if(v.i===i){const phase=phases[v.j];row[k]=Math.exp(-phase.start*Math.log1p(l.r))*factor(l.r,phase.length)/factor(l.r,l.n);}});const rhs=l.p/factor(l.r,l.n)/scale;add(row,rhs);add(row.map(x=>-x),-rhs);});
@@ -119,7 +120,7 @@ function smoothPlan(loans,peakOnly=false,budget=null){
         if(a<zero-tolerance)throw Error('noRate');
         if(Math.abs(a-zero)>tolerance){let lo=0,hi=a/p;for(let k=0;k<100;k++){const mid=(lo+hi)/2;if(p/factor(mid,n)>a)hi=mid;else lo=mid;}r=(lo+hi)/2;}
       }
-      if(!Number.isFinite(p)||p<=0||p>1e12)throw Error('invalid');
+      if(!Number.isFinite(p)||p<0||p>1e12)throw Error('invalid');
       return {p,n,r,a};
     });
     const N=Math.max(...solved.map(l=>l.n)),rows=[];
@@ -141,6 +142,14 @@ function smoothPlan(loans,peakOnly=false,budget=null){
     return {rows,periods,total,totalPrincipal,interest:total-totalPrincipal,months:N,solved:solved.map((l,i)=>({...l,last:paths[i].last}))};
   }
   function solveGlobal(raw,target,payment,smooth=false){
+    const active=raw.map((l,i)=>i).filter(i=>Number(raw[i].amount)!==0||!raw[i]._downPaymentApplied||target==='amount');
+    if(active.length<raw.length){
+      if(!active.length)throw Error(target==='rate'?'noRate':'noPayoff');
+      const result=solveGlobal(active.map(i=>raw[i]),target,payment,smooth);
+      result.rows=result.rows.map(row=>({...row,payments:raw.map((_,i)=>active.includes(i)?row.payments[active.indexOf(i)]:0),loanBalances:raw.map((_,i)=>active.includes(i)?row.loanBalances[active.indexOf(i)]:0)}));
+      result.solved=raw.map((l,i)=>active.includes(i)?result.solved[active.indexOf(i)]:{p:0,n:target==='duration'?result.months:Number(l.duration)*(l.durationUnit==='years'?12:1),r:target==='rate'?result.solved[0].r:monthlyRate(Number(l.rate),l.rateUnit),a:0,last:0});
+      return result;
+    }
     const a=Number(payment);
     if(!raw.length||!String(payment).trim()||!Number.isFinite(a)||a<=0||a>1e12)throw Error('invalidSolver');
     const known=normalize(raw.map(l=>({...l,amount:target==='amount'?1:l.amount,duration:target==='duration'?1:l.duration,durationUnit:target==='duration'?'months':l.durationUnit,rate:target==='rate'?0:l.rate})));
@@ -183,6 +192,16 @@ function smoothPlan(loans,peakOnly=false,budget=null){
     result.globalPayment=a;result.globalRule=target==='rate'?'commonRate':'equalAmounts';
     return result;
   }
-  root.LoanMath={factor,monthlyRate,normalize,calculate,solve,solveGlobal};
+  
+  function allocateDownPayment(raw,payment,target='payment'){
+    if(!Number.isFinite(payment)||payment<0||payment>1e12)throw Error('invalidSolver');
+    const known=normalize(raw.map(l=>({...l,duration:target==='duration'?1:l.duration,durationUnit:target==='duration'?'months':l.durationUnit,rate:target==='rate'?0:l.rate})));
+    const total=known.reduce((s,l)=>s+l.p,0);if(payment>total)throw Error('invalidSolver');
+    let remaining=payment;const values=known.map(l=>l.p);
+    const order=known.map((l,i)=>i).sort((a,b)=>known[b].r-known[a].r || a-b);
+    for(const i of order){const used=Math.min(remaining,values[i]);values[i]-=used;remaining-=used;}
+    return raw.map((l,i)=>({...l,amount:String(values[i]),_downPaymentApplied:true}));
+  }
+  root.LoanMath={allocateDownPayment,factor,monthlyRate,normalize,calculate,solve,solveGlobal};
   if(typeof module!=='undefined')module.exports=root.LoanMath;
 })(typeof globalThis!=='undefined'?globalThis:window);
