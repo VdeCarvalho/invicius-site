@@ -1,2 +1,195 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Compare monthly payments across multiple loans, with payment smoothing and a complete repayment schedule."><title>Loan Calculator</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=17"><script defer src="i18n.js?v=17"></script><script defer src="finance.js?v=17"></script><script defer src="pdf.js?v=17"></script><script defer src="excel.js?v=17"></script><script defer src="app.js?v=17"></script></head><body><div id="app"></div><noscript>This calculator requires JavaScript. / Esta calculadora precisa de JavaScript.</noscript></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Compare monthly payments across multiple loans, with payment smoothing and a complete repayment schedule.">
+  <title>Loan Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=17">
+
+  <script defer src="i18n.js?v=17"></script>
+  <script defer src="finance.js?v=17"></script>
+  <script defer src="pdf.js?v=17"></script>
+  <script defer src="excel.js?v=17"></script>
+  <script defer src="app.js?v=17"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <noscript>
+    This calculator requires JavaScript. / Esta calculadora precisa de JavaScript.
+  </noscript>
+
+  <script>
+    /*
+      Invicius Loan Calculator — V18
+      Down payment / Entrada
+
+      This extension runs after the existing deferred calculator scripts.
+      It changes only one thing in the calculation:
+          financed amount = declared amount - down payment
+
+      When "Amount" itself is the unknown target, the down-payment field is
+      hidden to avoid ambiguity in the inverse calculation.
+    */
+    window.addEventListener('DOMContentLoaded', () => {
+      const DOWN_PAYMENT_I18N_V18 = {
+        en: 'Down payment',
+        zh: '首付款',
+        hi: 'अग्रिम भुगतान',
+        es: 'Pago inicial',
+        ar: 'الدفعة المقدمة',
+        fr: 'Apport personnel',
+        ru: 'Первоначальный взнос',
+        bn: 'ডাউন পেমেন্ট',
+        pt: 'Entrada',
+        id: 'Uang muka',
+        ur: 'پیشگی ادائیگی'
+      };
+
+      const downPaymentLabelV18 = () =>
+        DOWN_PAYMENT_I18N_V18[state.lang] || DOWN_PAYMENT_I18N_V18.en;
+
+      function downPaymentValueV18(loan) {
+        const raw = String(loan?.downPayment ?? '').trim();
+        if (!raw) return 0;
+
+        const normalized = numeric(raw);
+
+        if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) {
+          throw Error('invalidSolver');
+        }
+
+        const value = Number(normalized);
+
+        if (!Number.isFinite(value) || value < 0 || value > 1e12) {
+          throw Error('invalidSolver');
+        }
+
+        return value;
+      }
+
+      const originalPreparedV18 = prepared;
+      const originalLoanFormV18 = loanForm;
+      const originalPdfReportV18 = pdfReport;
+      const originalExcelDownloadV18 = LoanExcel.download.bind(LoanExcel);
+
+      prepared = function preparedWithDownPayment() {
+        const loans = originalPreparedV18();
+
+        if (state.target === 'amount') {
+          return loans;
+        }
+
+        return loans.map((loan, index) => {
+          const downPayment = downPaymentValueV18(state.loans[index]);
+          const grossAmount = Number(loan.amount);
+
+          if (!Number.isFinite(grossAmount) || downPayment >= grossAmount) {
+            throw Error('invalidSolver');
+          }
+
+          return {
+            ...loan,
+            amount: String(grossAmount - downPayment)
+          };
+        });
+      };
+
+      loanForm = function loanFormWithDownPayment(loan, index) {
+        const original = originalLoanFormV18(loan, index);
+
+        if (state.target === 'amount') {
+          return original;
+        }
+
+        const downPayment = `
+          <div class="payment-field">
+            <label for="down-payment-${loan.id}">${downPaymentLabelV18()}</label>
+            <div class="amount-wrap">
+              <input
+                id="down-payment-${loan.id}"
+                data-field="downPayment"
+                type="text"
+                inputmode="decimal"
+                value="${escapeHTML(loan.downPayment ?? '')}"
+                placeholder="0"
+                autocomplete="off"
+              >
+              <span class="currency-tag">${state.currency}</span>
+            </div>
+          </div>
+        `;
+
+        return original.replace('</section>', `${downPayment}</section>`);
+      };
+
+      pdfReport = function pdfReportWithDownPayment() {
+        const report = originalPdfReportV18();
+
+        if (state.target !== 'amount') {
+          report.inputs = report.inputs.map((lines, index) => {
+            const copy = [...lines];
+
+            copy.splice(
+              2,
+              0,
+              `${downPaymentLabelV18()}: ${money(
+                downPaymentValueV18(state.loans[index])
+              )}`
+            );
+
+            return copy;
+          });
+        }
+
+        return report;
+      };
+
+      LoanExcel.download = async function downloadWithDownPayment(
+        exportState,
+        words,
+        math
+      ) {
+        if (exportState.target === 'amount') {
+          return originalExcelDownloadV18(exportState, words, math);
+        }
+
+        const adjustedState = {
+          ...exportState,
+          loans: exportState.loans.map(loan => {
+            const grossAmount = Number(numeric(loan.amount));
+            const downPayment = downPaymentValueV18(loan);
+
+            if (!Number.isFinite(grossAmount) || downPayment >= grossAmount) {
+              throw Error('invalidSolver');
+            }
+
+            return {
+              ...loan,
+              amount: String(grossAmount - downPayment)
+            };
+          })
+        };
+
+        return originalExcelDownloadV18(adjustedState, words, math);
+      };
+
+      /*
+        app.js has already rendered the calculator once. Render again now so
+        the new Down payment / Entrada field appears immediately.
+      */
+      render();
+    });
+  </script>
+</body>
+</html>
