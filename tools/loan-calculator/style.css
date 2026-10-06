@@ -1539,3 +1539,10 @@ a { color: #6fead8; }
 
 /* Consistent separation after Add loan. */
 #down-payment-section{margin-top:28px;margin-bottom:28px;}
+
+/* Payment phases belong to the main result card. */
+.payment-periods{display:grid;gap:24px;margin-top:10px;}
+.payment-period .hint{margin-bottom:6px;}
+.result-periods{margin-top:24px;}
+.result-top>div:first-child{min-width:0;flex:1;}
+@media(max-width:600px){.payment-periods .payment{font-size:clamp(25px,7vw,38px);overflow-wrap:anywhere;}}

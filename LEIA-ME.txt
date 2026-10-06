@@ -1,13 +1,17 @@
-INVICIUS V22 — PACOTE COMPLETO
+INVICIUS V23 — SITE COMPLETO
 
+Este pacote contem TODOS os arquivos rastreados no repositorio, com a pagina inicial restaurada e a calculadora atualizada.
+
+COMO ENVIAR
 1. Descompacte o ZIP.
-2. Abra a raiz do repositorio invicius-site no GitHub.
-3. Add file > Upload files: arraste as PASTAS tools, assets, scripts e .github, mantendo suas estruturas, e os ARQUIVOS index.html, app.js, CNAME e invicius-favicon.ico.
-4. Nao selecione todos os arquivos de dentro das subpastas: isso colocaria a calculadora na raiz. Nao use index.html de tools como pagina principal.
-5. Confirme Commit changes. Aguarde Actions terminar.
-6. Abra https://www.invicius.com/?v=22 e https://www.invicius.com/tools/loan-calculator/?v=22.
+2. Abra a RAIZ do repositorio invicius-site no GitHub.
+3. Add file > Upload files.
+4. Selecione os arquivos e pastas que estao DIRETAMENTE dentro do ZIP. Arraste tools como PASTA INTEIRA, assets como PASTA INTEIRA, scripts como PASTA INTEIRA e .github como PASTA INTEIRA.
+5. Nao abra tools para selecionar seus arquivos individualmente. Nao misture os arquivos das subpastas com os da raiz.
+6. Confira na lista de upload: index.html e tools/loan-calculator/index.html precisam aparecer como DOIS caminhos diferentes.
+7. Confirme o commit e aguarde o deploy.
 
-O index.html da raiz tem titulo Invicius. O outro index.html permanece em tools/loan-calculator.
-Se o dominio sem www apresentar erro, a correcao depende do DNS/redirecionamento na Spaceship. Arquivos no GitHub nao alteram DNS.
+O index.html DA RAIZ deve ter titulo Invicius.
+O index.html DA CALCULADORA deve estar em tools/loan-calculator/index.html e ter titulo Loan Calculator.
 
-V22: todos os periodos e pagamentos mensais aparecem no bloco superior. O bloco separado Payments over time foi removido.
+Os arquivos com nomes numerados ja presentes no repositorio foram preservados neste pacote completo.
