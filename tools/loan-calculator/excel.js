@@ -108,7 +108,8 @@
     S.str(0,1,'Loan Calculator',1);S.str(0,2,new Intl.DateTimeFormat(state.lang,{dateStyle:'long'}).format(new Date()),6);
     S.str(0,3,words.solveFor);S.str(1,3,words.target);S.str(0,4,words.mode);S.str(1,4,words.modeName);S.str(0,5,words.currency);S.str(1,5,state.currency);
     if(needsSolver||state.target==='amount'){S.str(0,6,words.monthlyPayment);S.num(1,6,numberInput(state.payment),3);}
-    S.str(0,8,L[3],1);[words.loan,words.amount,words.duration,words.durationUnit,words.rate+' (%)',words.rateUnit].forEach((x,i)=>S.str(i,header,x,2));
+    if(state.target!=='amount'){S.str(3,6,words.downPayment);S.num(4,6,numberInput(state.downPayment||0),3);}
+    S.str(0,8,L[3],1);[words.loan,words.amount,words.duration,words.durationUnit,words.rate+' (%)',words.rateUnit,...(state.target!=='amount'?[words.amount+' ('+L[3]+')',words.downPayment,L[5]]:[])].forEach((x,i)=>S.str(i,header,x,2));
     for(let i=0;i<N;i++){
       const l=loans[i],sr=first+i;
       S.str(0,sr,words.loan+' '+(i+1));
@@ -117,6 +118,7 @@
       S.str(3,sr,l.input.durationUnit,3);
       if(state.target!=='rate')S.num(4,sr,numberInput(l.input.rate),3);
       S.str(5,sr,l.input.rateUnit,3);
+      if(state.target!=='amount'){const original=numberInput((state.originalLoans||state.loans)[i].amount);S.num(6,sr,original,3);S.formula(8,sr,`E${sr}/IF(F${sr}="years",1200,100)`,l.rate,4);const before=i?`SUMIF($I$${first}:I${sr-1},I${sr},$G$${first}:G${sr-1})`:'0';S.formula(7,sr,`MIN(G${sr},MAX(0,$E$6-SUMIF($I$${first}:$I$${end},">"&I${sr},$G$${first}:$G$${end})-${before}))`,original-l.p,3);S.formula(1,sr,`MAX(0,G${sr}-H${sr})`,l.p,3);}
     }
     const resultRow=end+4,totalsRow=resultRow+4;
     S.str(0,resultRow-1,L[4],1);S.str(0,resultRow,words.target,2);
@@ -149,7 +151,7 @@
           const pc=4+i;
           if(state.target==='amount')C.formula(pc,pr,`IF(C${rAt(i)}>=B${pr},${sf}B6/COUNTIF($C$${loanStart}:$C$${loanEnd},">="&B${pr}),0)`,pieces[i],4);
           else if(state.target==='rate')C.formula(pc,pr,`${sf}B6*${rounded(pieces[i]/targetPay)}`,pieces[i],4);
-          else C.formula(pc,pr,`${sf}B${first+i}*${rounded(pieces[i]/resultLoans[i].p)}/$${helperLetter}$${rAt(i)}`,pieces[i],4);
+          else C.formula(pc,pr,`${sf}B${first+i}*${rounded((resultLoans[i].p?pieces[i]/resultLoans[i].p:0))}/IF($${helperLetter}$${rAt(i)}=0,1,$${helperLetter}$${rAt(i)})`,pieces[i],4);
         }
         C.formula(3,pr,`SUM(${col(4)}${pr}:${col(3+N)}${pr})`,r.rows[start-1].payment,4);
         previous=stop;
@@ -183,7 +185,7 @@
         const terms=phaseEnds.map((_,j)=>pvTerm(`${phaseCols[i]}${phaseStart+j}`,`D${lr}`,`A${phaseStart+j}`,`C${phaseStart+j}`));
         C.formula(8,lr,sum(terms),sol.p,4);C.formula(9,lr,`I${lr}-B${lr}`,0,4);
         if(state.target!=='amount'&&state.target!=='rate'){
-          const weights=phaseEnds.map((_,j)=>r.rows[(j?phaseEnds[j-1]:0)].payments[i]/sol.p);
+          const weights=phaseEnds.map((_,j)=>(sol.p?r.rows[(j?phaseEnds[j-1]:0)].payments[i]/sol.p:0));
           const factors=weights.map((weight,j)=>pvTerm(rounded(weight),`D${lr}`,`A${phaseStart+j}`,`C${phaseStart+j}`));
           C.formula(helperCol,lr,sum(factors),1,4);
         }
