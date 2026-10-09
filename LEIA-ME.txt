@@ -1,7 +1,7 @@
-INVICIUS V29 — SITE COMPLET
+INVICIUS V30 — SITE COMPLET
 
 Ce ZIP contient les 19 fichiers actuels du site, avec leurs dossiers.
-Il remplace V28. Le guide remplace l’ancienne rubrique dans les onze langues.
+Il remplace V29. Le guide remplace l’ancienne rubrique dans les onze langues.
 Les calculs, exports et règles AdSense sont inchangés.
 
 PUBLICATION
@@ -13,8 +13,8 @@ PUBLICATION
 5. Vérifiez la calculatrice et le guide en bas de page ; testez le sélecteur de langue.
 
 SUPPRESSIONS
-Le dépôt vérifié contient déjà les 19 fichiers de V28, sans les 39 fichiers anciens.
-AUCUNE SUPPRESSION SUPPLÉMENTAIRE N’EST NÉCESSAIRE pour passer de V28 à V29.
+Le dépôt vérifié contient déjà les 19 fichiers de V29, sans les 39 fichiers anciens.
+AUCUNE SUPPRESSION SUPPLÉMENTAIRE N’EST NÉCESSAIRE pour passer de V29 à V30.
 Les fichiers README.md, tools/loan-calculator/README.md et LEIA-ME.txt sont remplacés.
 Il n’y a pas de nouvelle page de documentation ni de copie numérotée.
 Gardez toujours index.html à la racine : c’est l’accueil Invicius.
@@ -23,3 +23,7 @@ AdSense : chargé uniquement sur tools/loan-calculator/index.html.
 L’accueil et privacy.html ne chargent pas le code publicitaire.
 Le message de consentement Google reste associé à la calculatrice.
 Le guide ne garantit pas l’approbation AdSense.
+
+V30 : seuls les blocs publicitaires de l’accueil et leurs styles sont retirés.
+Le contenu de l’accueil est centré, sans colonnes publicitaires vides.
+La calculatrice, son guide, ses calculs et ses exports restent inchangés.

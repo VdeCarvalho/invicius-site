@@ -1,4 +1,4 @@
-# Loan Calculator — V29
+# Loan Calculator — V30
 
 La calculatrice reste dans `tools/loan-calculator/`. Ne placez pas ses fichiers à la racine.
 Le guide intégré remplace l’ancienne rubrique « Comment fonctionne ce calcul ».

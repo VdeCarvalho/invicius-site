@@ -352,48 +352,12 @@
 
     .content-grid {
       width: 100%;
-
+      max-width: 940px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns:
-        minmax(120px, 1fr)
-        minmax(0, 940px)
-        minmax(120px, 1fr);
-
+      grid-template-columns: minmax(0, 1fr);
       gap: clamp(14px, 1.8vw, 28px);
       align-items: stretch;
-    }
-
-    .side-rail {
-      min-width: 0;
-      min-height: 650px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      padding: 24px 10px;
-
-      border: 1px dashed rgba(255, 255, 255, 0.36);
-      border-radius: 22px;
-
-      color: rgba(244, 252, 255, 0.78);
-      text-align: center;
-
-      background: rgba(2, 29, 72, 0.11);
-      backdrop-filter: blur(6px);
-    }
-
-    .side-rail strong {
-      font-size: 12px;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-
-    .side-rail span {
-      margin-top: 7px;
-      font-size: 11px;
-      color: rgba(244, 252, 255, 0.58);
     }
 
     .hero-card {
@@ -574,10 +538,6 @@
     .tobias-empty-page h3{margin:0;font-size:clamp(21px,3vw,31px);line-height:1.1}
     .tobias-empty-page p{margin:13px 0 0;color:rgba(239,251,255,.68);font-size:13px}
 
-    .mobile-rail {
-      display: none;
-    }
-
     .site-footer {
       padding: 0 20px 18px;
       text-align: center;
@@ -689,12 +649,7 @@
         gap: 12px;
       }
 
-      .content-grid {
-        grid-template-columns:
-          minmax(90px, 0.7fr)
-          minmax(0, 760px)
-          minmax(90px, 0.7fr);
-      }
+      .content-grid { max-width: 760px; }
     }
 
     @media (max-width: 900px) {
@@ -763,10 +718,6 @@
         margin: 0 auto;
       }
 
-      .side-rail {
-        display: none;
-      }
-
       .hero-card {
         min-height: auto;
         padding: 28px 20px 22px;
@@ -783,23 +734,6 @@
       .feed-card{grid-template-columns:1fr;min-height:0;padding:18px}
       .feed-info{padding:3px 3px 0}
       .preview-window{min-height:320px}
-
-      .mobile-rail {
-        margin-top: 18px;
-
-        min-height: 110px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        border: 1px dashed rgba(255, 255, 255, 0.36);
-        border-radius: 18px;
-
-        color: rgba(244, 252, 255, 0.74);
-        background: rgba(2, 29, 72, 0.11);
-      }
     }
 
     @media (max-width: 520px) {
@@ -873,10 +807,6 @@
 
   <main class="page-shell">
     <div class="content-grid">
-      <aside class="side-rail" aria-label="Advertisement">
-        <strong data-i18n="advertisement">Advertisement</strong>
-        <span data-i18n="reserved">Reserved ad space</span>
-      </aside>
 
       <section class="home-feed" aria-label="Invicius feed">
         <div class="feed-section">
@@ -906,16 +836,6 @@
           </article>
         </div>
       </section>
-
-      <aside class="side-rail" aria-label="Advertisement">
-        <strong data-i18n="advertisement">Advertisement</strong>
-        <span data-i18n="reserved">Reserved ad space</span>
-      </aside>
-
-      <aside class="mobile-rail" aria-label="Advertisement">
-        <strong data-i18n="advertisement">Advertisement</strong>
-        <span data-i18n="reserved">Reserved ad space</span>
-      </aside>
     </div>
   </main>
 
@@ -955,8 +875,6 @@
         tobiasFeedText: "The future home of Tobias and his adventure. The game page is being prepared.",
         comingSoon: "Coming soon",
         tobiasPageStatus: "Page under construction",
-        advertisement: "Advertisement",
-        reserved: "Reserved ad space"
       },
 
       zh: {
@@ -975,8 +893,6 @@
         tobiasFeedText: "Tobias 和他的冒险未来将在这里展开。游戏页面正在准备中。",
         comingSoon: "即将推出",
         tobiasPageStatus: "页面建设中",
-        advertisement: "广告",
-        reserved: "预留广告位"
       },
 
       hi: {
@@ -995,8 +911,6 @@
         tobiasFeedText: "Tobias और उसके रोमांच का भविष्य का घर। गेम पेज तैयार किया जा रहा है।",
         comingSoon: "जल्द आ रहा है",
         tobiasPageStatus: "पेज निर्माणाधीन है",
-        advertisement: "विज्ञापन",
-        reserved: "विज्ञापन के लिए आरक्षित स्थान"
       },
 
       es: {
@@ -1015,8 +929,6 @@
         tobiasFeedText: "El futuro hogar de Tobias y su aventura. La página del juego está en preparación.",
         comingSoon: "Próximamente",
         tobiasPageStatus: "Página en construcción",
-        advertisement: "Publicidad",
-        reserved: "Espacio publicitario reservado"
       },
 
       ar: {
@@ -1035,8 +947,6 @@
         tobiasFeedText: "المكان المستقبلي لتوبياس ومغامرته. صفحة اللعبة قيد الإعداد.",
         comingSoon: "قريبًا",
         tobiasPageStatus: "الصفحة قيد الإنشاء",
-        advertisement: "إعلان",
-        reserved: "مساحة إعلانية محجوزة"
       },
 
       fr: {
@@ -1055,8 +965,6 @@
         tobiasFeedText: "Le futur espace de Tobias et de son aventure. La page du jeu est en préparation.",
         comingSoon: "Bientôt disponible",
         tobiasPageStatus: "Page en construction",
-        advertisement: "Publicité",
-        reserved: "Espace publicitaire réservé"
       },
 
       ru: {
@@ -1075,8 +983,6 @@
         tobiasFeedText: "Будущий дом Тобиаса и его приключения. Страница игры готовится.",
         comingSoon: "Скоро",
         tobiasPageStatus: "Страница в разработке",
-        advertisement: "Реклама",
-        reserved: "Место для рекламы"
       },
 
       bn: {
@@ -1095,8 +1001,6 @@
         tobiasFeedText: "Tobias এবং তার অভিযানের ভবিষ্যৎ ঘর। গেমের পেজ প্রস্তুত করা হচ্ছে।",
         comingSoon: "শীঘ্রই আসছে",
         tobiasPageStatus: "পেজ নির্মাণাধীন",
-        advertisement: "বিজ্ঞাপন",
-        reserved: "বিজ্ঞাপনের জন্য সংরক্ষিত স্থান"
       },
 
       pt: {
@@ -1115,8 +1019,6 @@
         tobiasFeedText: "O futuro espaço do Tobias e de sua aventura. A página do jogo está sendo preparada.",
         comingSoon: "Em breve",
         tobiasPageStatus: "Página em construção",
-        advertisement: "Publicidade",
-        reserved: "Espaço reservado para anúncio"
       },
 
       id: {
@@ -1135,8 +1037,6 @@
         tobiasFeedText: "Rumah masa depan Tobias dan petualangannya. Halaman gim sedang disiapkan.",
         comingSoon: "Segera hadir",
         tobiasPageStatus: "Halaman sedang dibuat",
-        advertisement: "Iklan",
-        reserved: "Ruang iklan tersedia"
       },
 
       ur: {
@@ -1155,8 +1055,6 @@
         tobiasFeedText: "Tobias اور اس کی مہم کا مستقبل کا گھر۔ گیم کا صفحہ تیار کیا جا رہا ہے۔",
         comingSoon: "جلد آرہا ہے",
         tobiasPageStatus: "صفحہ زیر تعمیر ہے",
-        advertisement: "اشتہار",
-        reserved: "اشتہار کے لیے مختص جگہ"
       }
     };
 
