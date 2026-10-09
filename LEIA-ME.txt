@@ -1,4 +1,4 @@
-INVICIUS V23 — SITE COMPLETO
+INVICIUS V24 — SITE COMPLETO
 
 Este pacote contem TODOS os arquivos rastreados no repositorio, com a pagina inicial restaurada e a calculadora atualizada.
 
@@ -15,3 +15,14 @@ O index.html DA RAIZ deve ter titulo Invicius.
 O index.html DA CALCULADORA deve estar em tools/loan-calculator/index.html e ter titulo Loan Calculator.
 
 Os arquivos com nomes numerados ja presentes no repositorio foram preservados neste pacote completo.
+
+NOVO NESTA VERSAO
+Politica de privacidade: privacy.html, em ingles, portugues e frances.
+Contato: contact.invicius@gmail.com.
+Links no rodape da pagina inicial e da calculadora.
+A calculadora e a pagina inicial continuam nos mesmos caminhos.
+
+APOS PUBLICAR
+Abra https://www.invicius.com/privacy.html e confirme que a politica aparece.
+No AdSense, use essa URL no campo URL da politica de privacidade.
+Depois volte ao rascunho da mensagem de consentimento e conclua a publicacao.
