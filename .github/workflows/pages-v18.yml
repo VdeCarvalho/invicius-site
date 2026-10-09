@@ -1,4 +1,4 @@
-name: Deploy Invicius V18 to GitHub Pages
+name: Deploy Invicius V28 to GitHub Pages
 
 on:
   push:
@@ -28,14 +28,11 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          rsync -a \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='scripts/' \
-            --exclude='_site/' \
-            ./ _site/
+          cp index.html privacy.html CNAME invicius-favicon.ico _site/
+          cp -R assets tools _site/
+          find _site -type f \( -name 'README.md' -o -name '*.cjs' -o -name 'download' \) -delete
 
-      - name: Inject AdSense globally
+      - name: Enable AdSense only on Loan Calculator
         env:
           ADSENSE_CLIENT: ${{ vars.ADSENSE_CLIENT }}
         run: node scripts/inject-adsense.mjs _site
