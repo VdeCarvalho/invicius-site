@@ -1,28 +1,25 @@
-INVICIUS V24 — SITE COMPLETO
+INVICIUS V25 — SITE COMPLETO / SITE COMPLET
 
-Este pacote contem TODOS os arquivos rastreados no repositorio, com a pagina inicial restaurada e a calculadora atualizada.
+Este ZIP inclui TODOS os arquivos rastreados do repositorio atual.
+Ce ZIP contient TOUS les fichiers du dépôt actuel.
 
-COMO ENVIAR
-1. Descompacte o ZIP.
-2. Abra a RAIZ do repositorio invicius-site no GitHub.
-3. Add file > Upload files.
-4. Selecione os arquivos e pastas que estao DIRETAMENTE dentro do ZIP. Arraste tools como PASTA INTEIRA, assets como PASTA INTEIRA, scripts como PASTA INTEIRA e .github como PASTA INTEIRA.
-5. Nao abra tools para selecionar seus arquivos individualmente. Nao misture os arquivos das subpastas com os da raiz.
-6. Confira na lista de upload: index.html e tools/loan-calculator/index.html precisam aparecer como DOIS caminhos diferentes.
-7. Confirme o commit e aguarde o deploy.
+UPLOAD GITHUB
+1. Descompacte / Décompressez le ZIP.
+2. Abra / Ouvrez VdeCarvalho/invicius-site, branche main.
+3. Add file > Upload files: envie TODO o conteudo na RAIZ do repositorio.
+   Envoyez TOUT le contenu à la RACINE du dépôt.
+4. Preserve as pastas / Conservez les dossiers: assets, tools, scripts, .github.
+5. Nao coloque o conteudo de tools na raiz.
+   Ne déplacez pas les fichiers de tools à la racine.
+6. Confirme o commit / Validez le commit et attendez la publication.
 
-O index.html DA RAIZ deve ter titulo Invicius.
-O index.html DA CALCULADORA deve estar em tools/loan-calculator/index.html e ter titulo Loan Calculator.
+Homepage: index.html (Invicius)
+Calculadora / Calculatrice: tools/loan-calculator/index.html
+Politica / Politique: privacy.html
 
-Os arquivos com nomes numerados ja presentes no repositorio foram preservados neste pacote completo.
+V25: seletor com as mesmas onze linguas da calculadora, apenas uma traducao exibida, idioma compartilhado com o site, arabe e urdu da direita para a esquerda.
+V25 : sélecteur des onze langues de la calculatrice, une seule traduction affichée, préférence partagée avec le site, arabe et ourdou de droite à gauche.
 
-NOVO NESTA VERSAO
-Politica de privacidade: privacy.html, em ingles, portugues e frances.
-Contato: contact.invicius@gmail.com.
-Links no rodape da pagina inicial e da calculadora.
-A calculadora e a pagina inicial continuam nos mesmos caminhos.
-
-APOS PUBLICAR
-Abra https://www.invicius.com/privacy.html e confirme que a politica aparece.
-No AdSense, use essa URL no campo URL da politica de privacidade.
-Depois volte ao rascunho da mensagem de consentimento e conclua a publicacao.
+URL ADSENSE (apres publication / depois da publicacao):
+https://www.invicius.com/privacy.html
+Contato / Contact: contact.invicius@gmail.com
