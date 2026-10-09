@@ -1546,3 +1546,9 @@ a { color: #6fead8; }
 .result-periods{margin-top:24px;}
 .result-top>div:first-child{min-width:0;flex:1;}
 @media(max-width:600px){.payment-periods .payment{font-size:clamp(25px,7vw,38px);overflow-wrap:anywhere;}}
+
+/* One guide, below the results, using the current page language. */
+.calculator-guide .guide-content { padding-top: 1rem; }
+.calculator-guide .guide-content section + section { margin-top: 1.5rem; }
+.calculator-guide h3 { margin: 0 0 .65rem; font-size: 1.05rem; }
+.calculator-guide p { margin: .65rem 0; line-height: 1.7; overflow-wrap: anywhere; }

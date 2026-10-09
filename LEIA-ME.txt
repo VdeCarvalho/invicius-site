@@ -1,99 +1,25 @@
-INVICIUS V28 — REMPLACEMENT COMPLET
+INVICIUS V29 — SITE COMPLET
 
-Ce ZIP contient l'ensemble des fichiers utiles de la version 28.
-Il remplace directement la version 26 : inutile d'installer la version 27.
-Aucun calcul de Loan Calculator n'a été modifié.
-Tobias et le menu Games sont masqués. AdSense est chargé uniquement sur Loan Calculator.
-La politique garde ses onze langues. Le quatrième point de l'audit reste inchangé.
+Ce ZIP contient les 19 fichiers actuels du site, avec leurs dossiers.
+Il remplace V28. Le guide remplace l’ancienne rubrique dans les onze langues.
+Les calculs, exports et règles AdSense sont inchangés.
 
-1. Ouvrez VdeCarvalho/invicius-site, branche main.
-2. SUPPRIMEZ les fichiers anciens listés ci-dessous.
-   Chaque fichier : ouvrir > menu ... > Delete file > Commit changes sur main.
-   Ou ouvrez l'éditeur GitHub en appuyant sur la touche . depuis le dépôt.
-   Dans son explorateur : clic droit sur chaque fichier de la liste > Delete.
-   Dans Source Control : vérifiez la liste, saisissez un message, Commit & Push.
-3. Décompressez ce ZIP et envoyez TOUT son contenu à la RACINE du dépôt
-   avec Add file > Upload files, puis Commit changes sur main.
-   Conservez les dossiers assets, tools, scripts et .github.
-   Sur Windows, vérifiez que le dossier .github est bien inclus.
-   N'envoyez pas le ZIP lui-même, ni une enveloppe de dossier supplémentaire.
-4. Settings > Pages > Source : GitHub Actions.
-5. Attendez le succès de la dernière publication dans Actions.
+PUBLICATION
+1. Décompressez le ZIP.
+2. Ouvrez VdeCarvalho/invicius-site sur la branche main.
+3. Add file > Upload files : envoyez TOUT le contenu à la RACINE.
+   Conservez assets, tools, scripts et .github. N’envoyez pas le ZIP lui-même.
+4. Commit changes sur main ; attendez le succès de la dernière publication dans Actions.
+5. Vérifiez la calculatrice et le guide en bas de page ; testez le sélecteur de langue.
 
-IMPORTANT : envoyer le nouveau contenu ne supprime pas les fichiers anciens.
-Ne supprimez pas le dépôt entier, CNAME, index.html ni le dossier tools.
-Supprimez UNIQUEMENT les chemins listés ci-dessous.
-Les fichiers supprimés restent dans l'historique Git, mais ne sont plus publiés.
+SUPPRESSIONS
+Le dépôt vérifié contient déjà les 19 fichiers de V28, sans les 39 fichiers anciens.
+AUCUNE SUPPRESSION SUPPLÉMENTAIRE N’EST NÉCESSAIRE pour passer de V28 à V29.
+Les fichiers README.md, tools/loan-calculator/README.md et LEIA-ME.txt sont remplacés.
+Il n’y a pas de nouvelle page de documentation ni de copie numérotée.
+Gardez toujours index.html à la racine : c’est l’accueil Invicius.
 
-FICHIERS À SUPPRIMER (chemins relatifs à la racine)
-- README (12).md
-- README (2).md
-- app (1).js
-- app.js
-- download
-- download (2)
-- excel (3).js
-- excel.js
-- favicon (4).svg
-- favicon.svg
-- finance (5).js
-- finance (6).cjs
-- finance.cjs
-- finance.js
-- global (7).cjs
-- global.cjs
-- i18n (8).js
-- i18n.js
-- index (1).html
-- index (2).html
-- index (9).html
-- inject-adsense.mjs
-- invicius-icon.png
-- invicius-logo (10).png
-- invicius-logo.png
-- pages-v18.yml
-- pdf (11).js
-- pdf.js
-- smoothing (13).cjs
-- smoothing.cjs
-- solver (14).cjs
-- solver.cjs
-- style (15).css
-- style.css
-- tools/loan-calculator/download
-- tools/loan-calculator/finance.cjs
-- tools/loan-calculator/global.cjs
-- tools/loan-calculator/smoothing.cjs
-- tools/loan-calculator/solver.cjs
-
-FICHIERS À CONSERVER — LISTE COMPLÈTE DU ZIP
-- .github/workflows/pages-v18.yml
-- CNAME
-- LEIA-ME.txt
-- README.md
-- assets/invicius-icon.png
-- assets/invicius-logo.png
-- index.html
-- invicius-favicon.ico
-- privacy.html
-- scripts/inject-adsense.mjs
-- tools/loan-calculator/README.md
-- tools/loan-calculator/app.js
-- tools/loan-calculator/excel.js
-- tools/loan-calculator/favicon.svg
-- tools/loan-calculator/finance.js
-- tools/loan-calculator/i18n.js
-- tools/loan-calculator/index.html
-- tools/loan-calculator/pdf.js
-- tools/loan-calculator/style.css
-
-VÉRIFICATION
-- https://www.invicius.com/ : accueil Invicius, sans présentation de Tobias.
-- https://www.invicius.com/tools/loan-calculator/ : calculatrice fonctionnelle.
-- https://www.invicius.com/privacy.html : politique et choix des onze langues.
-- Les anciens index (1).html, index (2).html et index (9).html doivent renvoyer 404.
-- Le code publicitaire adsbygoogle.js doit apparaître uniquement sur la calculatrice.
-- ads.txt doit rester disponible à la racine après publication.
-Ne demandez la révision AdSense qu'après vérification de la version publiée.
-L'approbation et l'affichage des annonces dépendent de Google et des réglages AdSense.
-Contact : contact.invicius@gmail.com
+AdSense : chargé uniquement sur tools/loan-calculator/index.html.
+L’accueil et privacy.html ne chargent pas le code publicitaire.
+Le message de consentement Google reste associé à la calculatrice.
+Le guide ne garantit pas l’approbation AdSense.

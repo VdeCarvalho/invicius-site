@@ -1,4 +1,4 @@
-# Invicius — site complet V28
+# Invicius — site complet V29
 
 Accueil : `index.html`. Calculatrice : `tools/loan-calculator/index.html`.
 Politique de confidentialité : `privacy.html`, avec onze langues.
@@ -13,3 +13,7 @@ Aucun code publicitaire n'est chargé par ce système sur l'accueil ou la politi
 Le message de consentement Google dépend du code AdSense sur la calculatrice.
 
 Consultez LEIA-ME.txt pour le remplacement complet et les fichiers à supprimer.
+
+Le guide de la calculatrice remplace l’ancienne rubrique, dans les onze langues.
+Il présente la saisie, les mensualités, l’apport, les exports et les limites.
+Aucun fichier supplémentaire ni ancienne version du guide n’est ajouté.
