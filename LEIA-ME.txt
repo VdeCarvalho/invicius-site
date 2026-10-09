@@ -1,4 +1,4 @@
-INVICIUS V25 — SITE COMPLETO / SITE COMPLET
+INVICIUS V26 — SITE COMPLETO / SITE COMPLET
 
 Este ZIP inclui TODOS os arquivos rastreados do repositorio atual.
 Ce ZIP contient TOUS les fichiers du dépôt actuel.
@@ -17,9 +17,11 @@ Homepage: index.html (Invicius)
 Calculadora / Calculatrice: tools/loan-calculator/index.html
 Politica / Politique: privacy.html
 
-V25: seletor com as mesmas onze linguas da calculadora, apenas uma traducao exibida, idioma compartilhado com o site, arabe e urdu da direita para a esquerda.
-V25 : sélecteur des onze langues de la calculatrice, une seule traduction affichée, préférence partagée avec le site, arabe et ourdou de droite à gauche.
+V26: seletor com as mesmas onze linguas da calculadora, apenas uma traducao exibida, idioma compartilhado com o site, arabe e urdu da direita para a esquerda.
+V26 : sélecteur des onze langues de la calculatrice, une seule traduction affichée, préférence partagée avec le site, arabe et ourdou de droite à gauche.
 
 URL ADSENSE (apres publication / depois da publicacao):
 https://www.invicius.com/privacy.html
 Contato / Contact: contact.invicius@gmail.com
+
+V26 : politique applicable au site entier, rubrique générale « Fonctionnalités du site et traitement des données » dans les onze langues, lien Loan Calculator retiré du pied de page de la politique.
